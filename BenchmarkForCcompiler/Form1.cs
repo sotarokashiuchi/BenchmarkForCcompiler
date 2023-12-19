@@ -99,6 +99,41 @@ namespace BenchmarkForCcompiler
             textBox2.Text = profileInfo.Compiler;
             textBox3.Text = profileInfo.Option;
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            // ファイル名の競合を確認
+            string[] profileList = profile.GetList();
+            for(int i=0; i<profileList.Length; i++)
+            {
+                if (profileList[i] == comboBox1.Text)
+                {
+                    // エラー処理
+                    DialogResult dialogResult = MessageBox.Show(
+                        "既に同じ名前のプロファイルが存在しています。\n上書を行い続行しますか?\n",
+                        "Warning",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Warning
+                    );
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        // button6_Click();
+                    }
+                    return;
+                }
+            }
+
+            // ファイル作成
+            profile.CreateProfile(comboBox1.Text);
+            comboBox1.Items.Clear();
+            comboBox1.Items.AddRange(profile.GetList());
+            profile.SaveProfile(new Profile.ProfileInfo(comboBox1.Text, textBox2.Text, textBox3.Text));
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            profile.SaveProfile(new Profile.ProfileInfo(comboBox1.Text, textBox2.Text, textBox3.Text));
+        }
     }
 
     class Profile
@@ -142,6 +177,24 @@ namespace BenchmarkForCcompiler
                 }
             }
             return profileInfo;
+        }
+
+        public void CreateProfile(string fileName)
+        {
+            StreamWriter sw = new StreamWriter(profilePath + fileName);
+            sw.WriteLine("");
+            sw.Close();
+            return;
+        }
+
+        public void SaveProfile(ProfileInfo info) {
+            profileInfo = info;
+            StreamWriter sw = new StreamWriter(profilePath + profileInfo.ProfileName, false, Encoding.GetEncoding("Shift_JIS"));
+            sw.WriteLine("Hello");
+            sw.WriteLine("compiler, " + profileInfo.Compiler);
+            sw.WriteLine("option, " + profileInfo.Option);
+            sw.Close();
+            return;
         }
     }
 }
