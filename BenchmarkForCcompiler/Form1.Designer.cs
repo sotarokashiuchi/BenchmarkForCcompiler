@@ -179,6 +179,7 @@
             this.button3.TabIndex = 17;
             this.button3.Text = "作成";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label6
             // 
@@ -206,6 +207,7 @@
             this.button6.TabIndex = 19;
             this.button6.Text = "保存";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // label7
             // 

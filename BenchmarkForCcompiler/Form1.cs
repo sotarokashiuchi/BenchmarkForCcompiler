@@ -138,11 +138,18 @@ namespace BenchmarkForCcompiler
 
     class Profile
     {
-        // private Dictionary<string, string> profile = new Dictionary<string, string>();
         public struct ProfileInfo
         {
+            public string ProfileName;
             public string Compiler;
             public string Option;
+            
+            public ProfileInfo(string profileName, string compiler, string option)
+            {
+                ProfileName = profileName;
+                Compiler = compiler; 
+                Option = option;
+            }
         }
         private ProfileInfo profileInfo = new ProfileInfo();
         private string profilePath = @"C:\\Users\\sotar\\Desktop\\BenchmarkForCcompiler\\BenchmarkForCcompiler\\testcase\\profile\\";
@@ -164,7 +171,7 @@ namespace BenchmarkForCcompiler
             StreamReader sr = new StreamReader(profilePath + filename);
             string[] lists = sr.ReadToEnd().Split('\n');
             sr.Close();
-            Console.WriteLine(lists);
+            profileInfo.ProfileName = filename;
             for(int i=0; i < lists.Length; i++)
             {
                 string[] line = lists[i].Split(',');
