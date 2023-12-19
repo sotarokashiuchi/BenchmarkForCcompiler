@@ -30,18 +30,20 @@ namespace BenchmarkForCcompiler
             ProcessStartInfo psInfo = new ProcessStartInfo();
             psInfo.FileName = @textBox2.Text;
             psInfo.Arguments = @textBox4.Text;
-            //psInfo.Arguments = @textBox4.Text + " " + textBox3;
+            psInfo.Arguments = @textBox4.Text + " " + textBox3.Text;
             psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
-            //psInfo.RedirectStandardError = true;
+            psInfo.RedirectStandardError = true;
 
             Process p = Process.Start(psInfo); // コマンドの実行開始
             string line = "";
-            while((line = p.StandardOutput.ReadLine()) != null)
+            string lines = "";
+            while ((line = p.StandardOutput.ReadLine()) != null || (line = p.StandardError.ReadLine()) != null)
             {
-                textBox1.Text = line;
+                lines += line + "\r\n";
             }
+            textBox1.Text = lines;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -70,8 +72,6 @@ namespace BenchmarkForCcompiler
             psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
-            //psInfo.RedirectStandardError = true;
-
             Process p = Process.Start(psInfo); // コマンドの実行開始
             string line = "";
             string lines = "";
