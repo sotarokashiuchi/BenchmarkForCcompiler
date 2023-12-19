@@ -8,7 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Text.Json;
 using System.Windows.Forms.VisualStyles;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
+using System.IO;
+using System.Runtime.CompilerServices;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BenchmarkForCcompiler
 {
@@ -17,12 +23,19 @@ namespace BenchmarkForCcompiler
         public Form1()
         {
             InitializeComponent();
+            Profile profile = new Profile();
+            comboBox1.Items.AddRange(profile.GetList());
+            // Console.WriteLine(profile.RoadProfileInfo("file.txt"));
+            textBox5.Text = Convert.ToString(profile.RoadProfileInfo("file.txt")["compiler"]);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
         }
+
+
+        
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -85,16 +98,33 @@ namespace BenchmarkForCcompiler
 
     class Profile
     {
-        public void ShowList(System.Windows.Forms.ComboBox e)
+        private Dictionary<string, string> profile = new Dictionary<string, string>();
+        private string profilePath = @"C:\\Users\\sotar\\Desktop\\BenchmarkForCcompiler\\BenchmarkForCcompiler\\testcase\\profile\\";
+
+        public string[] GetList()
         {
             // Profileディレクトリのファイルを一覧取得
             string[] filename;
-            filename = Directory.GetFiles(@"C:\\Users\\sotar\\Desktop\\BenchmarkForCcompiler\\BenchmarkForCcompiler\\testcase\\profile\\");
+            filename = Directory.GetFiles(profilePath);
             for (int i = 0; i < filename.Length; i++)
             {
                 filename[i] = Path.GetFileName(filename[i]);
             }
-            e.Items.AddRange(filename);
+            return filename;
+        }
+
+        public Dictionary<string, string> RoadProfileInfo(string filename)
+        {
+            StreamReader sr = new StreamReader(profilePath + filename);
+            string[] lists = sr.ReadToEnd().Split('\n');
+            sr.Close();
+            Console.WriteLine(lists);
+            for(int i=0; i < lists.Length; i++)
+            {
+                string[] line = lists[i].Split(',');
+                profile.Add(line[0], line[1]);
+            }
+            return profile;
         }
     }
 }

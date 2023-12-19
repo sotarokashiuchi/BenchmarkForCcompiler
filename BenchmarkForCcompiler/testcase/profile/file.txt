@@ -1,0 +1,2 @@
+compiler, gdb
+option, -o main
