@@ -26,15 +26,15 @@ namespace BenchmarkForCcompiler
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            // saveFileDialog1.ShowDialog();
-            //ProcessStartInfoのオブジェクトを生成
+            // コンパイラの実行
             ProcessStartInfo psInfo = new ProcessStartInfo();
             psInfo.FileName = @textBox2.Text;
             psInfo.Arguments = @textBox4.Text;
+            //psInfo.Arguments = @textBox4.Text + " " + textBox3;
             psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
+            //psInfo.RedirectStandardError = true;
 
             Process p = Process.Start(psInfo); // コマンドの実行開始
             string line = "";
@@ -60,6 +60,26 @@ namespace BenchmarkForCcompiler
             {
                 textBox4.Text = ofd.FileName;
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // プログラムの実行
+            ProcessStartInfo psInfo = new ProcessStartInfo();
+            psInfo.FileName = "./a.exe";
+            psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
+            psInfo.UseShellExecute = false; // シェル機能を使用しない
+            psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
+            //psInfo.RedirectStandardError = true;
+
+            Process p = Process.Start(psInfo); // コマンドの実行開始
+            string line = "";
+            string lines = "";
+            while ((line = p.StandardOutput.ReadLine()) != null)
+            {
+                lines += line + "\r\n";
+            }
+            textBox5.Text = lines;
         }
     }
 }
