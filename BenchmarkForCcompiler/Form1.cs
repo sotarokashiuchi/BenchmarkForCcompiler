@@ -20,13 +20,11 @@ namespace BenchmarkForCcompiler
 {
     public partial class Form1 : Form
     {
+        Profile profile = new Profile();
         public Form1()
         {
             InitializeComponent();
-            Profile profile = new Profile();
             comboBox1.Items.AddRange(profile.GetList());
-            // Console.WriteLine(profile.RoadProfileInfo("file.txt"));
-            textBox5.Text = Convert.ToString(profile.RoadProfileInfo("file.txt")["compiler"]);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -94,11 +92,24 @@ namespace BenchmarkForCcompiler
             }
             textBox5.Text = lines;
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Profile.ProfileInfo profileInfo = profile.RoadProfileInfo(comboBox1.Text);
+            textBox2.Text = profileInfo.Compiler;
+            textBox3.Text = profileInfo.Option;
+        }
     }
 
     class Profile
     {
-        private Dictionary<string, string> profile = new Dictionary<string, string>();
+        // private Dictionary<string, string> profile = new Dictionary<string, string>();
+        public struct ProfileInfo
+        {
+            public string Compiler;
+            public string Option;
+        }
+        private ProfileInfo profileInfo = new ProfileInfo();
         private string profilePath = @"C:\\Users\\sotar\\Desktop\\BenchmarkForCcompiler\\BenchmarkForCcompiler\\testcase\\profile\\";
 
         public string[] GetList()
@@ -113,7 +124,7 @@ namespace BenchmarkForCcompiler
             return filename;
         }
 
-        public Dictionary<string, string> RoadProfileInfo(string filename)
+        public ProfileInfo RoadProfileInfo(string filename)
         {
             StreamReader sr = new StreamReader(profilePath + filename);
             string[] lists = sr.ReadToEnd().Split('\n');
@@ -122,9 +133,15 @@ namespace BenchmarkForCcompiler
             for(int i=0; i < lists.Length; i++)
             {
                 string[] line = lists[i].Split(',');
-                profile.Add(line[0], line[1]);
+                if (line[0] == "compiler")
+                {
+                    profileInfo.Compiler = line[1];
+                } else if (line[0] == "option")
+                {
+                    profileInfo.Option = line[1];
+                }
             }
-            return profile;
+            return profileInfo;
         }
     }
 }
