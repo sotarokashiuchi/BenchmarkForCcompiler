@@ -82,4 +82,19 @@ namespace BenchmarkForCcompiler
             textBox5.Text = lines;
         }
     }
+
+    class Profile
+    {
+        public void ShowList(System.Windows.Forms.ComboBox e)
+        {
+            // Profileディレクトリのファイルを一覧取得
+            string[] filename;
+            filename = Directory.GetFiles(@"C:\\Users\\sotar\\Desktop\\BenchmarkForCcompiler\\BenchmarkForCcompiler\\testcase\\profile\\");
+            for (int i = 0; i < filename.Length; i++)
+            {
+                filename[i] = Path.GetFileName(filename[i]);
+            }
+            e.Items.AddRange(filename);
+        }
+    }
 }
