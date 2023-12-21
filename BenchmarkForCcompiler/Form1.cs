@@ -133,6 +133,43 @@ namespace BenchmarkForCcompiler
         {
             profile.SaveProfile(new Profile.ProfileInfo(comboBox1.Text, textBox2.Text, textBox3.Text, textBox6.Text));
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox6_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true) { 
+                groupBox1.Visible = true;
+            } else
+            {
+                groupBox1.Visible = false;
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked == true)
+            {
+                groupBox2.Visible = true;
+            }
+            else
+            {
+                groupBox2.Visible = false;
+            }
+        }
     }
 
     class Profile
