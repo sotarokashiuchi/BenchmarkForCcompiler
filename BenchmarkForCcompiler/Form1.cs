@@ -41,7 +41,7 @@ namespace BenchmarkForCcompiler
             ProcessStartInfo psInfo = new ProcessStartInfo();
             psInfo.FileName = @textBox2.Text;
             psInfo.Arguments = @textBox4.Text;
-            psInfo.Arguments = @textBox4.Text + " " + textBox3.Text;
+            psInfo.Arguments = textBox3.Text + " " + @textBox4.Text;
             psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
@@ -79,7 +79,7 @@ namespace BenchmarkForCcompiler
         {
             // プログラムの実行
             ProcessStartInfo psInfo = new ProcessStartInfo();
-            psInfo.FileName = "./a.exe";
+            psInfo.FileName = @"./" + textBox6.Text;
             psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
@@ -115,11 +115,10 @@ namespace BenchmarkForCcompiler
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Warning
                     );
-                    if (dialogResult == DialogResult.Yes)
+                    if (dialogResult == DialogResult.No)
                     {
-                        // button6_Click();
+                        return;
                     }
-                    return;
                 }
             }
 
@@ -127,12 +126,12 @@ namespace BenchmarkForCcompiler
             profile.CreateProfile(comboBox1.Text);
             comboBox1.Items.Clear();
             comboBox1.Items.AddRange(profile.GetList());
-            profile.SaveProfile(new Profile.ProfileInfo(comboBox1.Text, textBox2.Text, textBox3.Text));
+            profile.SaveProfile(new Profile.ProfileInfo(comboBox1.Text, textBox2.Text, textBox3.Text, textBox6.Text));
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            profile.SaveProfile(new Profile.ProfileInfo(comboBox1.Text, textBox2.Text, textBox3.Text));
+            profile.SaveProfile(new Profile.ProfileInfo(comboBox1.Text, textBox2.Text, textBox3.Text, textBox6.Text));
         }
     }
 
@@ -143,12 +142,14 @@ namespace BenchmarkForCcompiler
             public string ProfileName;
             public string Compiler;
             public string Option;
+            public string ExecutableFileName;
             
-            public ProfileInfo(string profileName, string compiler, string option)
+            public ProfileInfo(string profileName, string compiler, string option, string executableFileName)
             {
                 ProfileName = profileName;
                 Compiler = compiler; 
                 Option = option;
+                ExecutableFileName = executableFileName;
             }
         }
         private ProfileInfo profileInfo = new ProfileInfo();
@@ -182,6 +183,10 @@ namespace BenchmarkForCcompiler
                 {
                     profileInfo.Option = line[1];
                 }
+                else if (line[0] == "executableFileName")
+                {
+                    profileInfo.ExecutableFileName = line[1];
+                }
             }
             return profileInfo;
         }
@@ -197,9 +202,9 @@ namespace BenchmarkForCcompiler
         public void SaveProfile(ProfileInfo info) {
             profileInfo = info;
             StreamWriter sw = new StreamWriter(profilePath + profileInfo.ProfileName, false, Encoding.GetEncoding("Shift_JIS"));
-            sw.WriteLine("Hello");
-            sw.WriteLine("compiler, " + profileInfo.Compiler);
+            sw.WriteLine("compiler," + profileInfo.Compiler);
             sw.WriteLine("option, " + profileInfo.Option);
+            sw.WriteLine("executableFileName, " + profileInfo.ExecutableFileName);
             sw.Close();
             return;
         }

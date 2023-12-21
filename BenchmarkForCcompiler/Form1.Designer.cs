@@ -47,11 +47,14 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button6 = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(50, 185);
+            this.button1.Location = new System.Drawing.Point(50, 220);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 28);
             this.button1.TabIndex = 0;
@@ -61,7 +64,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(50, 219);
+            this.textBox1.Location = new System.Drawing.Point(50, 254);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(509, 79);
@@ -85,7 +88,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(306, 136);
+            this.button4.Location = new System.Drawing.Point(306, 166);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(46, 28);
             this.button4.TabIndex = 10;
@@ -95,7 +98,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(161, 141);
+            this.textBox4.Location = new System.Drawing.Point(161, 171);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(139, 19);
             this.textBox4.TabIndex = 9;
@@ -103,7 +106,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(77, 144);
+            this.label3.Location = new System.Drawing.Point(77, 174);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 12);
             this.label3.TabIndex = 8;
@@ -137,7 +140,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(50, 338);
+            this.textBox5.Location = new System.Drawing.Point(50, 373);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(509, 92);
@@ -145,7 +148,7 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(50, 304);
+            this.button5.Location = new System.Drawing.Point(50, 339);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(132, 28);
             this.button5.TabIndex = 11;
@@ -156,7 +159,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(192, 193);
+            this.label4.Location = new System.Drawing.Point(192, 228);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(146, 12);
             this.label4.TabIndex = 13;
@@ -165,7 +168,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(192, 312);
+            this.label5.Location = new System.Drawing.Point(192, 347);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(145, 12);
             this.label5.TabIndex = 14;
@@ -218,11 +221,39 @@
             this.label7.TabIndex = 20;
             this.label7.Text = "詳細を表示";
             // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(161, 139);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(139, 19);
+            this.textBox6.TabIndex = 22;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(77, 142);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(75, 12);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "実行ファイル名";
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(358, 166);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(46, 28);
+            this.button7.TabIndex = 23;
+            this.button7.Text = "編集";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1443, 450);
+            this.ClientSize = new System.Drawing.Size(1443, 509);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.textBox6);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.comboBox1);
@@ -271,6 +302,9 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button button7;
     }
 }
 
