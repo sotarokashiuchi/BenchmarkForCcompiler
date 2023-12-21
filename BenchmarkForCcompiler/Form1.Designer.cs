@@ -386,6 +386,7 @@
             this.button8.TabIndex = 4;
             this.button8.Text = "参照";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label10
             // 
@@ -419,6 +420,7 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(121, 20);
             this.comboBox2.TabIndex = 18;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // button9
             // 
@@ -428,6 +430,7 @@
             this.button9.TabIndex = 17;
             this.button9.Text = "作成";
             this.button9.UseVisualStyleBackColor = true;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button10
             // 
@@ -437,6 +440,7 @@
             this.button10.TabIndex = 19;
             this.button10.Text = "保存";
             this.button10.UseVisualStyleBackColor = true;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
             // flowLayoutPanel1
             // 

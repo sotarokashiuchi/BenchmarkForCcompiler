@@ -1,3 +1,3 @@
-compiler,gcc
-option, -o program.exe
-executableFileName, program.exe
+compiler,ttt
+option, aaa
+executableFileName, 
