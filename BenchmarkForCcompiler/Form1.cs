@@ -24,6 +24,7 @@ namespace BenchmarkForCcompiler
     {
         Profile profileA = new Profile();
         Profile profileB = new Profile();
+        Compile CompileA = new Compile();
 
         public Form1()
         {
@@ -31,6 +32,7 @@ namespace BenchmarkForCcompiler
 
             profileA.Initialize(comboBox1, button3, button6, textBox2, textBox3, textBox6);
             profileB.Initialize(comboBox2, button9, button10, textBox7, textBox9, textBox8);
+            CompileA.Initialize(textBox1, textBox4);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -73,24 +75,7 @@ namespace BenchmarkForCcompiler
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            // コンパイラの実行
-            ProcessStartInfo psInfo = new ProcessStartInfo();
-            psInfo.FileName = @textBox2.Text;
-            psInfo.Arguments = @textBox4.Text;
-            psInfo.Arguments = textBox3.Text + " " + @textBox4.Text;
-            psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
-            psInfo.UseShellExecute = false; // シェル機能を使用しない
-            psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
-            psInfo.RedirectStandardError = true;
-
-            Process p = Process.Start(psInfo); // コマンドの実行開始
-            string line = "";
-            string lines = "";
-            while ((line = p.StandardOutput.ReadLine()) != null || (line = p.StandardError.ReadLine()) != null)
-            {
-                lines += line + "\r\n";
-            }
-            textBox1.Text = lines;
+            CompileA.CompileRun(profileA.GetNowProfile());
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -323,5 +308,46 @@ namespace BenchmarkForCcompiler
             sw.Close();
             return;
         }
+    }
+
+    class Compile
+    {
+        private System.Windows.Forms.TextBox outputTextBox;
+        private System.Windows.Forms.TextBox programFileNameTextBox;
+
+        public void Initialize(
+            System.Windows.Forms.TextBox outputTextBox,
+            System.Windows.Forms.TextBox programFileNameTextBox
+            )
+        {
+            this.outputTextBox = outputTextBox;
+            this.programFileNameTextBox = programFileNameTextBox;
+        }
+
+        public void CompileRun(Profile.ProfileInfo profileInfo)
+        {
+            // コンパイラの実行
+            ProcessStartInfo psInfo = new ProcessStartInfo();
+            psInfo.FileName = profileInfo.Compiler;
+            psInfo.Arguments = profileInfo.Option + " " + programFileNameTextBox.Text;
+            psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
+            psInfo.UseShellExecute = false; // シェル機能を使用しない
+            psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
+            psInfo.RedirectStandardError = true;
+
+            Process p = Process.Start(psInfo); // コマンドの実行開始
+            string line = "";
+            string lines = "";
+            while ((line = p.StandardOutput.ReadLine()) != null || (line = p.StandardError.ReadLine()) != null)
+            {
+                lines += line + "\r\n";
+            }
+            outputTextBox.Text = lines;
+        }
+    }
+
+    class Executable : Compile
+    {
+        // 実行はコンパイルの処理も行う
     }
 }
