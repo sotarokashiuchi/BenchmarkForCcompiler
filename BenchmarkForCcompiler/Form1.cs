@@ -272,6 +272,7 @@ namespace BenchmarkForCcompiler
             RoadProfileInfo(comboBox.Text);
             compilerTextBox.Text = profileInfo.Compiler;
             optionTextBox.Text = profileInfo.Option;
+            executableFileNameTextBox.Text = profileInfo.ExecutableFileName;
             return;
         }
 
@@ -307,13 +308,18 @@ namespace BenchmarkForCcompiler
             return;
         }
 
+        public ProfileInfo GetNowProfile()
+        {
+            return new ProfileInfo(comboBox.Text, compilerTextBox.Text, optionTextBox.Text, executableFileNameTextBox.Text);
+        }
+
         public void SaveProfile()
         {
-            profileInfo = new ProfileInfo(comboBox.Text, compilerTextBox.Text, optionTextBox.Text, executableFileNameTextBox.Text);
+            profileInfo = GetNowProfile();
             StreamWriter sw = new StreamWriter(profilePath + profileInfo.ProfileName, false, Encoding.GetEncoding("Shift_JIS"));
             sw.WriteLine("compiler," + profileInfo.Compiler);
-            sw.WriteLine("option, " + profileInfo.Option);
-            sw.WriteLine("executableFileName, " + profileInfo.ExecutableFileName);
+            sw.WriteLine("option," + profileInfo.Option);
+            sw.WriteLine("executableFileName," + profileInfo.ExecutableFileName);
             sw.Close();
             return;
         }
