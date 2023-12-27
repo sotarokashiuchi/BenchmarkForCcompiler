@@ -17,6 +17,7 @@ using System.Runtime.CompilerServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Security.Cryptography.X509Certificates;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using static BenchmarkForCcompiler.Profile;
 
 namespace BenchmarkForCcompiler
 {
@@ -26,6 +27,8 @@ namespace BenchmarkForCcompiler
         Profile profileB = new Profile();
         Compile CompileA = new Compile();
         Compile CompileB = new Compile();
+        Asm AsmA = new Asm();
+        Asm AsmB = new Asm();
         Executable ExecutableA = new Executable();
         Executable ExecutableB = new Executable();
 
@@ -33,10 +36,12 @@ namespace BenchmarkForCcompiler
         {
             InitializeComponent();
 
-            profileA.Initialize(comboBox1, button3, button6, textBox2, textBox3, textBox6);
-            profileB.Initialize(comboBox2, button9, button10, textBox7, textBox9, textBox8);
+            profileA.Initialize(comboBox1, button3, button6, textBox2, textBox3, textBox6, textBox15);
+            profileB.Initialize(comboBox2, button9, button10, textBox7, textBox9, textBox8, textBox14);
             CompileA.Initialize(textBox1, textBox4);
             CompileB.Initialize(textBox11, textBox4);
+            AsmA.Initialize(textBox13, textBox15);
+            AsmB.Initialize(textBox12, textBox14);
             ExecutableA.Initialize(textBox5, textBox6);
             ExecutableB.Initialize(textBox10, textBox8);
         }
@@ -172,6 +177,16 @@ namespace BenchmarkForCcompiler
         {
 
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            AsmA.Show();
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            AsmB.Show();
+        }
     }
 
     class Profile
@@ -182,13 +197,15 @@ namespace BenchmarkForCcompiler
             public string Compiler;
             public string Option;
             public string ExecutableFileName;
+            public string AsmFileName;
 
-            public ProfileInfo(string profileName, string compiler, string option, string executableFileName)
+            public ProfileInfo(string profileName, string compiler, string option, string executableFileName, string asmFileName)
             {
                 ProfileName = profileName;
                 Compiler = compiler;
                 Option = option;
                 ExecutableFileName = executableFileName;
+                AsmFileName = asmFileName;
             }
         }
         private ProfileInfo profileInfo = new ProfileInfo();
@@ -198,6 +215,7 @@ namespace BenchmarkForCcompiler
         private System.Windows.Forms.TextBox compilerTextBox;
         private System.Windows.Forms.TextBox optionTextBox;
         private System.Windows.Forms.TextBox executableFileNameTextBox;
+        private System.Windows.Forms.TextBox asmFileNameTextBox;
         private string profilePath = @"C:\\Users\\sotar\\Desktop\\BenchmarkForCcompiler\\BenchmarkForCcompiler\\testcase\\profile\\";
 
         public void Initialize(
@@ -206,7 +224,8 @@ namespace BenchmarkForCcompiler
             System.Windows.Forms.Button saveButton,
             System.Windows.Forms.TextBox compilerTextBox,
             System.Windows.Forms.TextBox optionTextBox,
-            System.Windows.Forms.TextBox executableFileNameTextBox
+            System.Windows.Forms.TextBox executableFileNameTextBox,
+            System.Windows.Forms.TextBox asmFileNameTextBox
             )
         {
             this.comboBox = comboBox;
@@ -215,6 +234,7 @@ namespace BenchmarkForCcompiler
             this.compilerTextBox = compilerTextBox;
             this.optionTextBox = optionTextBox;
             this.executableFileNameTextBox = executableFileNameTextBox;
+            this.asmFileNameTextBox = asmFileNameTextBox;
             ShowProfileList();
         }
 
@@ -239,9 +259,11 @@ namespace BenchmarkForCcompiler
 
         public ProfileInfo RoadProfileInfo(string filename)
         {
-            StreamReader sr = new StreamReader(profilePath + filename);
-            string[] lists = sr.ReadToEnd().Split('\n');
+            StreamReader sr = new StreamReader(profilePath + filename, Encoding.GetEncoding("UTF-8"));
+            string[] lists = sr.ReadToEnd().Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            //string[] lists = sr.ReadToEnd().Split('\n');
             sr.Close();
+            profileInfo = new ProfileInfo();
             profileInfo.ProfileName = filename;
             for (int i = 0; i < lists.Length; i++)
             {
@@ -258,6 +280,10 @@ namespace BenchmarkForCcompiler
                 {
                     profileInfo.ExecutableFileName = line[1];
                 }
+                else if (line[0] == "asmFileName")
+                {
+                    profileInfo.AsmFileName = line[1];
+                }
             }
             return profileInfo;
         }
@@ -268,6 +294,7 @@ namespace BenchmarkForCcompiler
             compilerTextBox.Text = profileInfo.Compiler;
             optionTextBox.Text = profileInfo.Option;
             executableFileNameTextBox.Text = profileInfo.ExecutableFileName;
+            asmFileNameTextBox.Text = profileInfo.AsmFileName;
             return;
         }
 
@@ -296,7 +323,7 @@ namespace BenchmarkForCcompiler
             }
 
             // ファイル作成
-            StreamWriter sw = new StreamWriter(profilePath + comboBox.Text);
+            StreamWriter sw = new StreamWriter(profilePath + comboBox.Text, false);
             sw.WriteLine("");
             sw.Close();
             SaveProfile();
@@ -305,16 +332,17 @@ namespace BenchmarkForCcompiler
 
         public ProfileInfo GetNowProfile()
         {
-            return new ProfileInfo(comboBox.Text, compilerTextBox.Text, optionTextBox.Text, executableFileNameTextBox.Text);
+            return new ProfileInfo(comboBox.Text, compilerTextBox.Text, optionTextBox.Text, executableFileNameTextBox.Text, asmFileNameTextBox.Text);
         }
 
         public void SaveProfile()
         {
             profileInfo = GetNowProfile();
-            StreamWriter sw = new StreamWriter(profilePath + profileInfo.ProfileName, false, Encoding.GetEncoding("Shift_JIS"));
+            StreamWriter sw = new StreamWriter(profilePath + profileInfo.ProfileName, false, Encoding.GetEncoding("UTF-8"));
             sw.WriteLine("compiler," + profileInfo.Compiler);
             sw.WriteLine("option," + profileInfo.Option);
             sw.WriteLine("executableFileName," + profileInfo.ExecutableFileName);
+            sw.WriteLine("asmFileName," + profileInfo.AsmFileName);
             sw.Close();
             return;
         }
@@ -357,6 +385,17 @@ namespace BenchmarkForCcompiler
             outputTextBox.Text = lines;
         }
 
+    }
+
+    class Asm : Compile
+    {
+        public void Show()
+        {
+            StreamReader sr = new StreamReader(inputFileNameTextBox.Text, Encoding.GetEncoding("UTF-8"));
+            outputTextBox.Text = sr.ReadToEnd();
+            sr.Close();
+
+        }
     }
 
     class Executable : Compile
