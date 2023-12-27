@@ -27,6 +27,7 @@ namespace BenchmarkForCcompiler
         Compile CompileA = new Compile();
         Compile CompileB = new Compile();
         Executable ExecutableA = new Executable();
+        Executable ExecutableB = new Executable();
 
         public Form1()
         {
@@ -35,7 +36,9 @@ namespace BenchmarkForCcompiler
             profileA.Initialize(comboBox1, button3, button6, textBox2, textBox3, textBox6);
             profileB.Initialize(comboBox2, button9, button10, textBox7, textBox9, textBox8);
             CompileA.Initialize(textBox1, textBox4);
+            CompileB.Initialize(textBox11, textBox4);
             ExecutableA.Initialize(textBox5, textBox6);
+            ExecutableB.Initialize(textBox10, textBox8);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -75,10 +78,6 @@ namespace BenchmarkForCcompiler
         private void button10_Click(object sender, EventArgs e)
         {
             profileB.SaveProfile();
-        }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            CompileA.Run(profileA.GetNowProfile());
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -121,9 +120,25 @@ namespace BenchmarkForCcompiler
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CompileA.Run(profileA.GetNowProfile());
+        }
+
+
         private void button5_Click(object sender, EventArgs e)
         {
             ExecutableA.Run();
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            CompileB.Run(profileB.GetNowProfile());
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            ExecutableB.Run();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -151,6 +166,11 @@ namespace BenchmarkForCcompiler
                 textBox.Text = ofd.FileName;
             }
             return;
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 
@@ -325,7 +345,7 @@ namespace BenchmarkForCcompiler
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
             psInfo.RedirectStandardError = true;
 
-            Console.WriteLine( psInfo.FileName + psInfo.Arguments );
+            Console.WriteLine(psInfo.FileName + psInfo.Arguments);
 
             Process p = Process.Start(psInfo); // コマンドの実行開始
             string line = "";
@@ -342,7 +362,7 @@ namespace BenchmarkForCcompiler
     class Executable : Compile
     {
         // 実行はコンパイルの処理も行う
-        public void Run( )
+        public void Run()
         {
             // プログラムの実行
             ProcessStartInfo psInfo = new ProcessStartInfo();
@@ -351,7 +371,7 @@ namespace BenchmarkForCcompiler
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
 
-            Console.WriteLine(psInfo.FileName + psInfo.Arguments );
+            Console.WriteLine(psInfo.FileName + psInfo.Arguments);
 
             Process p = Process.Start(psInfo); // コマンドの実行開始
             string line = "";

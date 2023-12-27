@@ -68,6 +68,22 @@
             this.button10 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.button11 = new System.Windows.Forms.Button();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.button12 = new System.Windows.Forms.Button();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.button13 = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.button14 = new System.Windows.Forms.Button();
+            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBox15 = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -78,17 +94,17 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 348);
+            this.button1.Location = new System.Drawing.Point(12, 417);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 28);
             this.button1.TabIndex = 0;
-            this.button1.Text = "コンパイル実行";
+            this.button1.Text = "コンパイルA実行";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 382);
+            this.textBox1.Location = new System.Drawing.Point(12, 451);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(509, 79);
@@ -122,7 +138,7 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(12, 501);
+            this.textBox5.Location = new System.Drawing.Point(12, 706);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(509, 92);
@@ -130,18 +146,18 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(12, 467);
+            this.button5.Location = new System.Drawing.Point(12, 672);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(132, 28);
             this.button5.TabIndex = 11;
-            this.button5.Text = "プログラム実行";
+            this.button5.Text = "プログラムA実行";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(154, 356);
+            this.label4.Location = new System.Drawing.Point(154, 425);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(146, 12);
             this.label4.TabIndex = 13;
@@ -150,7 +166,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(154, 475);
+            this.label5.Location = new System.Drawing.Point(154, 680);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(145, 12);
             this.label5.TabIndex = 14;
@@ -205,7 +221,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(90, 41);
+            this.textBox3.Location = new System.Drawing.Point(104, 37);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(139, 19);
             this.textBox3.TabIndex = 6;
@@ -230,7 +246,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(235, 11);
+            this.button2.Location = new System.Drawing.Point(249, 7);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(46, 28);
             this.button2.TabIndex = 4;
@@ -240,7 +256,7 @@
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(90, 66);
+            this.textBox6.Location = new System.Drawing.Point(104, 62);
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(139, 19);
             this.textBox6.TabIndex = 22;
@@ -248,7 +264,7 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(90, 16);
+            this.textBox2.Location = new System.Drawing.Point(104, 12);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(139, 19);
             this.textBox2.TabIndex = 3;
@@ -275,6 +291,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox15);
+            this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox6);
@@ -284,7 +302,7 @@
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Location = new System.Drawing.Point(13, 30);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(288, 95);
+            this.groupBox1.Size = new System.Drawing.Size(326, 120);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Visible = false;
@@ -301,7 +319,7 @@
             this.panel1.Controls.Add(this.button6);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(343, 128);
+            this.panel1.Size = new System.Drawing.Size(343, 153);
             this.panel1.TabIndex = 26;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -314,9 +332,9 @@
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.button9);
             this.panel2.Controls.Add(this.button10);
-            this.panel2.Location = new System.Drawing.Point(3, 137);
+            this.panel2.Location = new System.Drawing.Point(3, 162);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(343, 128);
+            this.panel2.Size = new System.Drawing.Size(343, 153);
             this.panel2.TabIndex = 27;
             // 
             // label7
@@ -341,6 +359,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBox14);
+            this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.textBox7);
             this.groupBox2.Controls.Add(this.textBox8);
@@ -350,10 +370,11 @@
             this.groupBox2.Controls.Add(this.textBox9);
             this.groupBox2.Location = new System.Drawing.Point(13, 30);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(288, 95);
+            this.groupBox2.Size = new System.Drawing.Size(326, 120);
             this.groupBox2.TabIndex = 24;
             this.groupBox2.TabStop = false;
             this.groupBox2.Visible = false;
+            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // label9
             // 
@@ -366,21 +387,21 @@
             // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(90, 16);
+            this.textBox7.Location = new System.Drawing.Point(104, 16);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(139, 19);
             this.textBox7.TabIndex = 3;
             // 
             // textBox8
             // 
-            this.textBox8.Location = new System.Drawing.Point(90, 66);
+            this.textBox8.Location = new System.Drawing.Point(104, 66);
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(139, 19);
             this.textBox8.TabIndex = 22;
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(235, 11);
+            this.button8.Location = new System.Drawing.Point(249, 11);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(46, 28);
             this.button8.TabIndex = 4;
@@ -408,7 +429,7 @@
             // 
             // textBox9
             // 
-            this.textBox9.Location = new System.Drawing.Point(90, 41);
+            this.textBox9.Location = new System.Drawing.Point(104, 41);
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(139, 19);
             this.textBox9.TabIndex = 6;
@@ -449,7 +470,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panel3);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(358, 330);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(358, 386);
             this.flowLayoutPanel1.TabIndex = 28;
             // 
             // panel3
@@ -458,17 +479,167 @@
             this.panel3.Controls.Add(this.textBox4);
             this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.button4);
-            this.panel3.Location = new System.Drawing.Point(3, 271);
+            this.panel3.Location = new System.Drawing.Point(3, 321);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(339, 28);
             this.panel3.TabIndex = 29;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(699, 680);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(145, 12);
+            this.label12.TabIndex = 34;
+            this.label12.Text = "プログラムの出力を表示します";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(699, 425);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(146, 12);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "コンパイルの情報を表示します";
+            // 
+            // textBox10
+            // 
+            this.textBox10.Location = new System.Drawing.Point(557, 706);
+            this.textBox10.Multiline = true;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(509, 92);
+            this.textBox10.TabIndex = 32;
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(557, 672);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(132, 28);
+            this.button11.TabIndex = 31;
+            this.button11.Text = "プログラムB実行";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click);
+            // 
+            // textBox11
+            // 
+            this.textBox11.Location = new System.Drawing.Point(557, 451);
+            this.textBox11.Multiline = true;
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(509, 79);
+            this.textBox11.TabIndex = 30;
+            // 
+            // button12
+            // 
+            this.button12.Location = new System.Drawing.Point(557, 417);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(132, 28);
+            this.button12.TabIndex = 29;
+            this.button12.Text = "コンパイルB実行";
+            this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(699, 548);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(145, 12);
+            this.label14.TabIndex = 40;
+            this.label14.Text = "プログラムの出力を表示します";
+            // 
+            // textBox12
+            // 
+            this.textBox12.Location = new System.Drawing.Point(557, 574);
+            this.textBox12.Multiline = true;
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(509, 92);
+            this.textBox12.TabIndex = 39;
+            // 
+            // button13
+            // 
+            this.button13.Location = new System.Drawing.Point(557, 540);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(132, 28);
+            this.button13.TabIndex = 38;
+            this.button13.Text = "アセンブラB表示";
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(154, 548);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(145, 12);
+            this.label15.TabIndex = 37;
+            this.label15.Text = "プログラムの出力を表示します";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(12, 574);
+            this.textBox13.Multiline = true;
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(509, 92);
+            this.textBox13.TabIndex = 36;
+            // 
+            // button14
+            // 
+            this.button14.Location = new System.Drawing.Point(12, 540);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(132, 28);
+            this.button14.TabIndex = 35;
+            this.button14.Text = "アセンブラA表示";
+            this.button14.UseVisualStyleBackColor = true;
+            // 
+            // textBox14
+            // 
+            this.textBox14.Location = new System.Drawing.Point(104, 91);
+            this.textBox14.Name = "textBox14";
+            this.textBox14.Size = new System.Drawing.Size(139, 19);
+            this.textBox14.TabIndex = 24;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 94);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(96, 12);
+            this.label16.TabIndex = 23;
+            this.label16.Text = "アセンブラファイル名";
+            // 
+            // textBox15
+            // 
+            this.textBox15.Location = new System.Drawing.Point(104, 87);
+            this.textBox15.Name = "textBox15";
+            this.textBox15.Size = new System.Drawing.Size(139, 19);
+            this.textBox15.TabIndex = 26;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(6, 90);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(96, 12);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "アセンブラファイル名";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(718, 647);
+            this.ClientSize = new System.Drawing.Size(1392, 826);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.textBox12);
+            this.Controls.Add(this.button13);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.textBox13);
+            this.Controls.Add(this.button14);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.textBox10);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.button12);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -538,6 +709,22 @@
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox13;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.TextBox textBox15;
+        private System.Windows.Forms.Label label17;
     }
 }
 
