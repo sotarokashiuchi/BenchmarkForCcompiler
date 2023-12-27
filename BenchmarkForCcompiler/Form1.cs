@@ -25,6 +25,8 @@ namespace BenchmarkForCcompiler
         Profile profileA = new Profile();
         Profile profileB = new Profile();
         Compile CompileA = new Compile();
+        Compile CompileB = new Compile();
+        Executable ExecutableA = new Executable();
 
         public Form1()
         {
@@ -33,6 +35,7 @@ namespace BenchmarkForCcompiler
             profileA.Initialize(comboBox1, button3, button6, textBox2, textBox3, textBox6);
             profileB.Initialize(comboBox2, button9, button10, textBox7, textBox9, textBox8);
             CompileA.Initialize(textBox1, textBox4);
+            ExecutableA.Initialize(textBox5, textBox6);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -75,7 +78,7 @@ namespace BenchmarkForCcompiler
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            CompileA.CompileRun(profileA.GetNowProfile());
+            CompileA.Run(profileA.GetNowProfile());
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -120,20 +123,7 @@ namespace BenchmarkForCcompiler
 
         private void button5_Click(object sender, EventArgs e)
         {
-            // プログラムの実行
-            ProcessStartInfo psInfo = new ProcessStartInfo();
-            psInfo.FileName = @"./" + textBox6.Text;
-            psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
-            psInfo.UseShellExecute = false; // シェル機能を使用しない
-            psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
-            Process p = Process.Start(psInfo); // コマンドの実行開始
-            string line = "";
-            string lines = "";
-            while ((line = p.StandardOutput.ReadLine()) != null)
-            {
-                lines += line + "\r\n";
-            }
-            textBox5.Text = lines;
+            ExecutableA.Run();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -312,28 +302,30 @@ namespace BenchmarkForCcompiler
 
     class Compile
     {
-        private System.Windows.Forms.TextBox outputTextBox;
-        private System.Windows.Forms.TextBox programFileNameTextBox;
+        protected System.Windows.Forms.TextBox outputTextBox;
+        protected System.Windows.Forms.TextBox inputFileNameTextBox;
 
         public void Initialize(
             System.Windows.Forms.TextBox outputTextBox,
-            System.Windows.Forms.TextBox programFileNameTextBox
+            System.Windows.Forms.TextBox inputFileNameTextBox
             )
         {
             this.outputTextBox = outputTextBox;
-            this.programFileNameTextBox = programFileNameTextBox;
+            this.inputFileNameTextBox = inputFileNameTextBox;
         }
 
-        public void CompileRun(Profile.ProfileInfo profileInfo)
+        public void Run(Profile.ProfileInfo profileInfo)
         {
             // コンパイラの実行
             ProcessStartInfo psInfo = new ProcessStartInfo();
             psInfo.FileName = profileInfo.Compiler;
-            psInfo.Arguments = profileInfo.Option + " " + programFileNameTextBox.Text;
+            psInfo.Arguments = profileInfo.Option + " " + inputFileNameTextBox.Text;
             psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
             psInfo.RedirectStandardError = true;
+
+            Console.WriteLine( psInfo.FileName + psInfo.Arguments );
 
             Process p = Process.Start(psInfo); // コマンドの実行開始
             string line = "";
@@ -344,10 +336,32 @@ namespace BenchmarkForCcompiler
             }
             outputTextBox.Text = lines;
         }
+
     }
 
     class Executable : Compile
     {
         // 実行はコンパイルの処理も行う
+        public void Run( )
+        {
+            // プログラムの実行
+            ProcessStartInfo psInfo = new ProcessStartInfo();
+            psInfo.FileName = @"./" + inputFileNameTextBox.Text;
+            psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
+            psInfo.UseShellExecute = false; // シェル機能を使用しない
+            psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
+
+            Console.WriteLine(psInfo.FileName + psInfo.Arguments );
+
+            Process p = Process.Start(psInfo); // コマンドの実行開始
+            string line = "";
+            string lines = "";
+            while ((line = p.StandardOutput.ReadLine()) != null)
+            {
+                lines += line + "\r\n";
+            }
+            outputTextBox.Text = lines;
+
+        }
     }
 }
