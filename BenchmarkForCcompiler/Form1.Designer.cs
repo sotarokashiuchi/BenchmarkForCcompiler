@@ -84,7 +84,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
-            this.button15 = new System.Windows.Forms.Button();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
@@ -95,6 +94,12 @@
             this.表示モードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.比較表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diff表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.button15 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -102,11 +107,16 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.flowLayoutPanel2.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 417);
+            this.button1.Location = new System.Drawing.Point(15, 13);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(132, 28);
             this.button1.TabIndex = 0;
@@ -116,7 +126,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 451);
+            this.textBox1.Location = new System.Drawing.Point(15, 47);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -151,16 +161,16 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(12, 706);
+            this.textBox5.Location = new System.Drawing.Point(15, 375);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
             this.textBox5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox5.Size = new System.Drawing.Size(509, 92);
+            this.textBox5.Size = new System.Drawing.Size(509, 129);
             this.textBox5.TabIndex = 12;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(12, 672);
+            this.button5.Location = new System.Drawing.Point(15, 341);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(132, 28);
             this.button5.TabIndex = 11;
@@ -171,7 +181,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(154, 425);
+            this.label4.Location = new System.Drawing.Point(157, 21);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(146, 12);
             this.label4.TabIndex = 13;
@@ -180,7 +190,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(154, 680);
+            this.label5.Location = new System.Drawing.Point(157, 349);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(145, 12);
             this.label5.TabIndex = 14;
@@ -362,7 +372,7 @@
             this.panel2.Controls.Add(this.comboBox2);
             this.panel2.Controls.Add(this.button9);
             this.panel2.Controls.Add(this.button10);
-            this.panel2.Location = new System.Drawing.Point(3, 162);
+            this.panel2.Location = new System.Drawing.Point(352, 3);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(343, 153);
             this.panel2.TabIndex = 27;
@@ -511,12 +521,14 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
-            this.flowLayoutPanel1.Controls.Add(this.panel3);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 27);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(358, 386);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1664, 159);
             this.flowLayoutPanel1.TabIndex = 28;
             // 
             // panel3
@@ -525,15 +537,15 @@
             this.panel3.Controls.Add(this.textBox4);
             this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.button4);
-            this.panel3.Location = new System.Drawing.Point(3, 321);
+            this.panel3.Location = new System.Drawing.Point(3, 168);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(339, 28);
+            this.panel3.Size = new System.Drawing.Size(692, 28);
             this.panel3.TabIndex = 29;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(699, 680);
+            this.label12.Location = new System.Drawing.Point(153, 349);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(145, 12);
             this.label12.TabIndex = 34;
@@ -542,7 +554,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(699, 425);
+            this.label13.Location = new System.Drawing.Point(153, 21);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(146, 12);
             this.label13.TabIndex = 33;
@@ -550,16 +562,16 @@
             // 
             // textBox10
             // 
-            this.textBox10.Location = new System.Drawing.Point(557, 706);
+            this.textBox10.Location = new System.Drawing.Point(11, 375);
             this.textBox10.Multiline = true;
             this.textBox10.Name = "textBox10";
             this.textBox10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox10.Size = new System.Drawing.Size(509, 92);
+            this.textBox10.Size = new System.Drawing.Size(509, 129);
             this.textBox10.TabIndex = 32;
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(557, 672);
+            this.button11.Location = new System.Drawing.Point(11, 341);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(132, 28);
             this.button11.TabIndex = 31;
@@ -569,7 +581,7 @@
             // 
             // textBox11
             // 
-            this.textBox11.Location = new System.Drawing.Point(557, 451);
+            this.textBox11.Location = new System.Drawing.Point(11, 47);
             this.textBox11.Multiline = true;
             this.textBox11.Name = "textBox11";
             this.textBox11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -578,7 +590,7 @@
             // 
             // button12
             // 
-            this.button12.Location = new System.Drawing.Point(557, 417);
+            this.button12.Location = new System.Drawing.Point(11, 13);
             this.button12.Name = "button12";
             this.button12.Size = new System.Drawing.Size(132, 28);
             this.button12.TabIndex = 29;
@@ -589,7 +601,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(699, 548);
+            this.label14.Location = new System.Drawing.Point(153, 144);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(145, 12);
             this.label14.TabIndex = 40;
@@ -597,16 +609,16 @@
             // 
             // textBox12
             // 
-            this.textBox12.Location = new System.Drawing.Point(557, 574);
+            this.textBox12.Location = new System.Drawing.Point(11, 170);
             this.textBox12.Multiline = true;
             this.textBox12.Name = "textBox12";
             this.textBox12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox12.Size = new System.Drawing.Size(509, 92);
+            this.textBox12.Size = new System.Drawing.Size(509, 165);
             this.textBox12.TabIndex = 39;
             // 
             // button13
             // 
-            this.button13.Location = new System.Drawing.Point(557, 540);
+            this.button13.Location = new System.Drawing.Point(11, 136);
             this.button13.Name = "button13";
             this.button13.Size = new System.Drawing.Size(132, 28);
             this.button13.TabIndex = 38;
@@ -617,7 +629,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(154, 548);
+            this.label15.Location = new System.Drawing.Point(157, 144);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(145, 12);
             this.label15.TabIndex = 37;
@@ -625,16 +637,16 @@
             // 
             // textBox13
             // 
-            this.textBox13.Location = new System.Drawing.Point(12, 574);
+            this.textBox13.Location = new System.Drawing.Point(15, 170);
             this.textBox13.Multiline = true;
             this.textBox13.Name = "textBox13";
             this.textBox13.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox13.Size = new System.Drawing.Size(509, 92);
+            this.textBox13.Size = new System.Drawing.Size(509, 165);
             this.textBox13.TabIndex = 36;
             // 
             // button14
             // 
-            this.button14.Location = new System.Drawing.Point(12, 540);
+            this.button14.Location = new System.Drawing.Point(15, 136);
             this.button14.Name = "button14";
             this.button14.Size = new System.Drawing.Size(132, 28);
             this.button14.TabIndex = 35;
@@ -642,19 +654,9 @@
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
-            // button15
-            // 
-            this.button15.Location = new System.Drawing.Point(502, 375);
-            this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(75, 23);
-            this.button15.TabIndex = 41;
-            this.button15.Text = "比較モード";
-            this.button15.UseVisualStyleBackColor = true;
-            this.button15.Click += new System.EventHandler(this.button15_Click);
-            // 
             // textBox16
             // 
-            this.textBox16.Location = new System.Drawing.Point(1081, 451);
+            this.textBox16.Location = new System.Drawing.Point(3, 36);
             this.textBox16.Multiline = true;
             this.textBox16.Name = "textBox16";
             this.textBox16.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -663,7 +665,7 @@
             // 
             // textBox17
             // 
-            this.textBox17.Location = new System.Drawing.Point(1081, 574);
+            this.textBox17.Location = new System.Drawing.Point(3, 159);
             this.textBox17.Multiline = true;
             this.textBox17.Name = "textBox17";
             this.textBox17.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -672,7 +674,7 @@
             // 
             // textBox18
             // 
-            this.textBox18.Location = new System.Drawing.Point(1081, 706);
+            this.textBox18.Location = new System.Drawing.Point(3, 291);
             this.textBox18.Multiline = true;
             this.textBox18.Name = "textBox18";
             this.textBox18.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -686,7 +688,7 @@
             this.表示ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1597, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1702, 24);
             this.menuStrip1.TabIndex = 43;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -701,7 +703,7 @@
             // 全て実行ToolStripMenuItem
             // 
             this.全て実行ToolStripMenuItem.Name = "全て実行ToolStripMenuItem";
-            this.全て実行ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.全て実行ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.全て実行ToolStripMenuItem.Text = "全て実行";
             // 
             // 表示ToolStripMenuItem
@@ -718,50 +720,113 @@
             this.比較表示ToolStripMenuItem,
             this.diff表示ToolStripMenuItem});
             this.表示モードToolStripMenuItem.Name = "表示モードToolStripMenuItem";
-            this.表示モードToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.表示モードToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.表示モードToolStripMenuItem.Text = "表示モード";
             // 
             // 比較表示ToolStripMenuItem
             // 
             this.比較表示ToolStripMenuItem.Name = "比較表示ToolStripMenuItem";
-            this.比較表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.比較表示ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.比較表示ToolStripMenuItem.Text = "比較表示";
+            this.比較表示ToolStripMenuItem.Click += new System.EventHandler(this.比較表示ToolStripMenuItem_Click);
             // 
             // diff表示ToolStripMenuItem
             // 
             this.diff表示ToolStripMenuItem.Name = "diff表示ToolStripMenuItem";
-            this.diff表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.diff表示ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.diff表示ToolStripMenuItem.Text = "Diff表示";
+            this.diff表示ToolStripMenuItem.Click += new System.EventHandler(this.diff表示ToolStripMenuItem_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.button5);
+            this.panel4.Controls.Add(this.textBox5);
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.button14);
+            this.panel4.Controls.Add(this.textBox13);
+            this.panel4.Controls.Add(this.label15);
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(549, 536);
+            this.panel4.TabIndex = 44;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.textBox16);
+            this.panel5.Controls.Add(this.textBox17);
+            this.panel5.Controls.Add(this.textBox18);
+            this.panel5.Location = new System.Drawing.Point(1089, 3);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(554, 397);
+            this.panel5.TabIndex = 45;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel2.AutoSize = true;
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel3, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.flowLayoutPanel2, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.button15, 0, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(12, 27);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 585F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1670, 816);
+            this.tableLayoutPanel2.TabIndex = 46;
+            // 
+            // flowLayoutPanel2
+            // 
+            this.flowLayoutPanel2.Controls.Add(this.panel4);
+            this.flowLayoutPanel2.Controls.Add(this.panel6);
+            this.flowLayoutPanel2.Controls.Add(this.panel5);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 202);
+            this.flowLayoutPanel2.Name = "flowLayoutPanel2";
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1664, 571);
+            this.flowLayoutPanel2.TabIndex = 30;
+            this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.button12);
+            this.panel6.Controls.Add(this.button11);
+            this.panel6.Controls.Add(this.textBox11);
+            this.panel6.Controls.Add(this.textBox10);
+            this.panel6.Controls.Add(this.label13);
+            this.panel6.Controls.Add(this.label14);
+            this.panel6.Controls.Add(this.label12);
+            this.panel6.Controls.Add(this.button13);
+            this.panel6.Controls.Add(this.textBox12);
+            this.panel6.Location = new System.Drawing.Point(558, 3);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(525, 536);
+            this.panel6.TabIndex = 47;
+            // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(3, 787);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(75, 23);
+            this.button15.TabIndex = 31;
+            this.button15.Text = "button15";
+            this.button15.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1597, 826);
-            this.Controls.Add(this.textBox18);
-            this.Controls.Add(this.textBox17);
-            this.Controls.Add(this.textBox16);
-            this.Controls.Add(this.button15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.textBox12);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.textBox13);
-            this.Controls.Add(this.button14);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.button11);
-            this.Controls.Add(this.textBox11);
-            this.Controls.Add(this.button12);
-            this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(1702, 843);
+            this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
@@ -781,6 +846,15 @@
             this.panel3.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.flowLayoutPanel2.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -844,7 +918,6 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Button button15;
         private System.Windows.Forms.TextBox textBox16;
         private System.Windows.Forms.TextBox textBox17;
         private System.Windows.Forms.TextBox textBox18;
@@ -855,6 +928,12 @@
         private System.Windows.Forms.ToolStripMenuItem 表示モードToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 比較表示ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem diff表示ToolStripMenuItem;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button button15;
     }
 }
 

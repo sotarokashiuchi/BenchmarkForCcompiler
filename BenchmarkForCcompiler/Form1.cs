@@ -42,7 +42,8 @@ namespace BenchmarkForCcompiler
         {
             Comparison comparison = new Comparison();
             Console.WriteLine(comparison.GNUDiff("Hello World", "Helllo World Japan."));
-
+            tableLayoutPanel2.Width = 000;
+            tableLayoutPanel2.Height = 000;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -184,8 +185,37 @@ namespace BenchmarkForCcompiler
 
         private void button15_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void 比較表示ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            比較表示ToolStripMenuItem.Checked = true;
+            diff表示ToolStripMenuItem.Checked = false;
+            changeViewMode(true);
+
+        }
+
+        private void diff表示ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            diff表示ToolStripMenuItem.Checked = true;
+            比較表示ToolStripMenuItem.Checked = false;
+            changeViewMode(false);
             compile.Comparison();
             asm.Comparison();
+        }
+
+        private void changeViewMode(bool mode)
+        {
+            // modeがtrueの時、比較モード、falseの時、diffモード
+            panel4.Visible = true == mode;
+            panel6.Visible = true == mode;
+
+            panel5.Visible = false == mode;
+        }
+
+        private void flowLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
