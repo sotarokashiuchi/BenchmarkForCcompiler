@@ -21,11 +21,9 @@ namespace BenchmarkForCcompiler
     {
         Profile profileA = new Profile();
         Profile profileB = new Profile();
-        Compile CompileA = new Compile();
-        Compile CompileB = new Compile();
-        Asm AsmA = new Asm();
-        Asm AsmB = new Asm();
-        Executable ExecutableA = new Executable();
+        Compile compile = new Compile();
+        Asm asm = new Asm();
+        Executable executable = new Executable();
         Executable ExecutableB = new Executable();
 
         public Form1()
@@ -34,12 +32,9 @@ namespace BenchmarkForCcompiler
 
             profileA.Initialize(comboBox1, button3, button6, textBox2, textBox3, textBox6, textBox15);
             profileB.Initialize(comboBox2, button9, button10, textBox7, textBox9, textBox8, textBox14);
-            CompileA.Initialize(textBox1, textBox4);
-            CompileB.Initialize(textBox11, textBox4);
-            AsmA.Initialize(textBox13, textBox15);
-            AsmB.Initialize(textBox12, textBox14);
-            ExecutableA.Initialize(textBox5, textBox6);
-            ExecutableB.Initialize(textBox10, textBox8);
+            compile.Initialize(textBox1, textBox4, textBox11, textBox4);
+            asm.Initialize(textBox13, textBox15, textBox12, textBox14);
+            executable.Initialize(textBox5, textBox6, textBox10, textBox8);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -125,23 +120,23 @@ namespace BenchmarkForCcompiler
 
         private void button1_Click(object sender, EventArgs e)
         {
-            CompileA.Run(profileA.GetNowProfile());
+            compile.Run(ProfileStatus.ProfileA, profileA.GetNowProfile());
         }
 
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ExecutableA.Run();
+            executable.Run(ProfileStatus.ProfileA);
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
-            CompileB.Run(profileB.GetNowProfile());
+            compile.Run(ProfileStatus.ProfileB, profileA.GetNowProfile());
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
-            ExecutableB.Run();
+            executable.Run(ProfileStatus.ProfileB);
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -178,12 +173,17 @@ namespace BenchmarkForCcompiler
 
         private void button14_Click(object sender, EventArgs e)
         {
-            AsmA.Show();
+            asm.Show(ProfileStatus.ProfileA);
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            AsmB.Show();
+            asm.Show(ProfileStatus.ProfileB);
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
@@ -346,22 +346,55 @@ namespace BenchmarkForCcompiler
         }
     }
 
+    public enum ProfileStatus
+    {
+        ProfileA,
+        ProfileB,
+    }
+
     class Compile
     {
         protected System.Windows.Forms.TextBox outputTextBox;
         protected System.Windows.Forms.TextBox inputFileNameTextBox;
+        protected System.Windows.Forms.TextBox ProfileA_OutputTextBox;
+        protected System.Windows.Forms.TextBox ProfileA_InputFileNameTextBox;
+        protected System.Windows.Forms.TextBox ProfileB_OutputTextBox;
+        protected System.Windows.Forms.TextBox ProfileB_InputFileNameTextBox;
 
         public void Initialize(
-            System.Windows.Forms.TextBox outputTextBox,
-            System.Windows.Forms.TextBox inputFileNameTextBox
+            System.Windows.Forms.TextBox ProfileA_OutputTextBox,
+            System.Windows.Forms.TextBox ProfileA_InputFileNameTextBox,
+            System.Windows.Forms.TextBox ProfileB_OutputTextBox,
+            System.Windows.Forms.TextBox ProfileB_InputFileNameTextBox
             )
         {
-            this.outputTextBox = outputTextBox;
-            this.inputFileNameTextBox = inputFileNameTextBox;
+            this.ProfileA_OutputTextBox = ProfileA_OutputTextBox;
+            this.ProfileA_InputFileNameTextBox = ProfileA_InputFileNameTextBox;
+            this.ProfileB_OutputTextBox = ProfileB_OutputTextBox;
+            this.ProfileB_InputFileNameTextBox = ProfileB_InputFileNameTextBox;
         }
 
-        public void Run(Profile.ProfileInfo profileInfo)
+        protected void switchProfile(ProfileStatus profileStatus)
         {
+            switch (profileStatus)
+            {
+                case ProfileStatus.ProfileA:
+                    outputTextBox = ProfileA_OutputTextBox;
+                    inputFileNameTextBox = ProfileA_InputFileNameTextBox;
+                    break;
+                case ProfileStatus.ProfileB:
+                    outputTextBox = ProfileB_OutputTextBox;
+                    inputFileNameTextBox = ProfileB_InputFileNameTextBox;
+                    break;
+                default:
+                    Console.WriteLine("Error:プロファイルを選択してください。");
+                    break;
+            }
+        }
+
+        public void Run(ProfileStatus profileStatus, Profile.ProfileInfo profileInfo)
+        {
+            switchProfile(profileStatus);
             // コンパイラの実行
             ProcessStartInfo psInfo = new ProcessStartInfo();
             psInfo.FileName = profileInfo.Compiler;
@@ -387,8 +420,9 @@ namespace BenchmarkForCcompiler
 
     class Asm : Compile
     {
-        public void Show()
+        public void Show(ProfileStatus profileStatus)
         {
+            switchProfile(profileStatus);
             StreamReader sr = new StreamReader(inputFileNameTextBox.Text, Encoding.GetEncoding("UTF-8"));
             outputTextBox.Text = sr.ReadToEnd();
             sr.Close();
@@ -399,8 +433,9 @@ namespace BenchmarkForCcompiler
     class Executable : Compile
     {
         // 実行はコンパイルの処理も行う
-        public void Run()
+        public void Run(ProfileStatus profileStatus)
         {
+            switchProfile(profileStatus);
             // プログラムの実行
             ProcessStartInfo psInfo = new ProcessStartInfo();
             psInfo.FileName = @"./" + inputFileNameTextBox.Text;

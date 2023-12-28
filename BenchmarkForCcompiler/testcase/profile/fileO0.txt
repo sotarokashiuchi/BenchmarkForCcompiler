@@ -1,0 +1,4 @@
+﻿compiler,gcc
+option,-save-temps -masm=intel -O0 -o a
+executableFileName,a.exe
+asmFileName,a-print.s

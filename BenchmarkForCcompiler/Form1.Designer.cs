@@ -84,6 +84,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
+            this.button15 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -630,12 +631,23 @@
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
+            // button15
+            // 
+            this.button15.Location = new System.Drawing.Point(502, 375);
+            this.button15.Name = "button15";
+            this.button15.Size = new System.Drawing.Size(75, 23);
+            this.button15.TabIndex = 41;
+            this.button15.Text = "比較モード";
+            this.button15.UseVisualStyleBackColor = true;
+            this.button15.Click += new System.EventHandler(this.button15_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1392, 826);
+            this.Controls.Add(this.button15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox12);
             this.Controls.Add(this.button13);
@@ -733,6 +745,7 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Button button15;
     }
 }
 
