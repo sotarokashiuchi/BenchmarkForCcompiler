@@ -14,6 +14,7 @@ using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using System.IO;
 using DiffMatchPatch;
+using System.Web.Configuration;
 
 namespace BenchmarkForCcompiler
 {
@@ -32,9 +33,9 @@ namespace BenchmarkForCcompiler
 
             profileA.Initialize(comboBox1, button3, button6, textBox2, textBox3, textBox6, textBox15);
             profileB.Initialize(comboBox2, button9, button10, textBox7, textBox9, textBox8, textBox14);
-            compile.Initialize(textBox1, textBox4, textBox11, textBox4);
-            asm.Initialize(textBox13, textBox15, textBox12, textBox14);
-            executable.Initialize(textBox5, textBox6, textBox10, textBox8);
+            compile.Initialize(textBox1, textBox4, textBox11, textBox4, textBox16);
+            asm.Initialize(textBox13, textBox15, textBox12, textBox14, textBox17);
+            executable.Initialize(textBox5, textBox6, textBox10, textBox8, textBox18);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -183,6 +184,8 @@ namespace BenchmarkForCcompiler
 
         private void button15_Click(object sender, EventArgs e)
         {
+            compile.Comparison();
+            asm.Comparison();
 
         }
     }
@@ -360,18 +363,22 @@ namespace BenchmarkForCcompiler
         protected System.Windows.Forms.TextBox ProfileA_InputFileNameTextBox;
         protected System.Windows.Forms.TextBox ProfileB_OutputTextBox;
         protected System.Windows.Forms.TextBox ProfileB_InputFileNameTextBox;
+        protected System.Windows.Forms.TextBox ComparisonOutputTextBox;
+        protected Comparison comparison = new Comparison();
 
         public void Initialize(
             System.Windows.Forms.TextBox ProfileA_OutputTextBox,
             System.Windows.Forms.TextBox ProfileA_InputFileNameTextBox,
             System.Windows.Forms.TextBox ProfileB_OutputTextBox,
-            System.Windows.Forms.TextBox ProfileB_InputFileNameTextBox
+            System.Windows.Forms.TextBox ProfileB_InputFileNameTextBox,
+            System.Windows.Forms.TextBox ComparisonOutputTextBox
             )
         {
             this.ProfileA_OutputTextBox = ProfileA_OutputTextBox;
             this.ProfileA_InputFileNameTextBox = ProfileA_InputFileNameTextBox;
             this.ProfileB_OutputTextBox = ProfileB_OutputTextBox;
             this.ProfileB_InputFileNameTextBox = ProfileB_InputFileNameTextBox;
+            this.ComparisonOutputTextBox = ComparisonOutputTextBox;
         }
 
         protected void switchProfile(ProfileStatus profileStatus)
@@ -414,6 +421,12 @@ namespace BenchmarkForCcompiler
                 lines += line + "\r\n";
             }
             outputTextBox.Text = lines;
+        }
+
+        public void Comparison()
+        {
+            string diff =  comparison.GNUDiff(ProfileA_OutputTextBox.Text, ProfileB_OutputTextBox.Text);
+            ComparisonOutputTextBox.Text = diff.Replace("\n", Environment.NewLine);
         }
 
     }

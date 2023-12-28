@@ -85,12 +85,23 @@
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
             this.button15 = new System.Windows.Forms.Button();
+            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.textBox18 = new System.Windows.Forms.TextBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.実行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.全て実行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.表示モードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.比較表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.diff表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -503,7 +514,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Controls.Add(this.panel3);
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 27);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(358, 386);
             this.flowLayoutPanel1.TabIndex = 28;
@@ -641,12 +652,96 @@
             this.button15.UseVisualStyleBackColor = true;
             this.button15.Click += new System.EventHandler(this.button15_Click);
             // 
+            // textBox16
+            // 
+            this.textBox16.Location = new System.Drawing.Point(1081, 451);
+            this.textBox16.Multiline = true;
+            this.textBox16.Name = "textBox16";
+            this.textBox16.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox16.Size = new System.Drawing.Size(509, 79);
+            this.textBox16.TabIndex = 42;
+            // 
+            // textBox17
+            // 
+            this.textBox17.Location = new System.Drawing.Point(1081, 574);
+            this.textBox17.Multiline = true;
+            this.textBox17.Name = "textBox17";
+            this.textBox17.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox17.Size = new System.Drawing.Size(509, 79);
+            this.textBox17.TabIndex = 42;
+            // 
+            // textBox18
+            // 
+            this.textBox18.Location = new System.Drawing.Point(1081, 706);
+            this.textBox18.Multiline = true;
+            this.textBox18.Name = "textBox18";
+            this.textBox18.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox18.Size = new System.Drawing.Size(509, 79);
+            this.textBox18.TabIndex = 42;
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.実行ToolStripMenuItem,
+            this.表示ToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1597, 24);
+            this.menuStrip1.TabIndex = 43;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 実行ToolStripMenuItem
+            // 
+            this.実行ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.全て実行ToolStripMenuItem});
+            this.実行ToolStripMenuItem.Name = "実行ToolStripMenuItem";
+            this.実行ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.実行ToolStripMenuItem.Text = "実行";
+            // 
+            // 全て実行ToolStripMenuItem
+            // 
+            this.全て実行ToolStripMenuItem.Name = "全て実行ToolStripMenuItem";
+            this.全て実行ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.全て実行ToolStripMenuItem.Text = "全て実行";
+            // 
+            // 表示ToolStripMenuItem
+            // 
+            this.表示ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.表示モードToolStripMenuItem});
+            this.表示ToolStripMenuItem.Name = "表示ToolStripMenuItem";
+            this.表示ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.表示ToolStripMenuItem.Text = "表示";
+            // 
+            // 表示モードToolStripMenuItem
+            // 
+            this.表示モードToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.比較表示ToolStripMenuItem,
+            this.diff表示ToolStripMenuItem});
+            this.表示モードToolStripMenuItem.Name = "表示モードToolStripMenuItem";
+            this.表示モードToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.表示モードToolStripMenuItem.Text = "表示モード";
+            // 
+            // 比較表示ToolStripMenuItem
+            // 
+            this.比較表示ToolStripMenuItem.Name = "比較表示ToolStripMenuItem";
+            this.比較表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.比較表示ToolStripMenuItem.Text = "比較表示";
+            // 
+            // diff表示ToolStripMenuItem
+            // 
+            this.diff表示ToolStripMenuItem.Name = "diff表示ToolStripMenuItem";
+            this.diff表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.diff表示ToolStripMenuItem.Text = "Diff表示";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1392, 826);
+            this.ClientSize = new System.Drawing.Size(1597, 826);
+            this.Controls.Add(this.textBox18);
+            this.Controls.Add(this.textBox17);
+            this.Controls.Add(this.textBox16);
             this.Controls.Add(this.button15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.textBox12);
@@ -667,6 +762,8 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -682,6 +779,8 @@
             this.flowLayoutPanel1.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -746,6 +845,16 @@
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox textBox18;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem 実行ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 全て実行ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 表示ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 表示モードToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem 比較表示ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem diff表示ToolStripMenuItem;
     }
 }
 
