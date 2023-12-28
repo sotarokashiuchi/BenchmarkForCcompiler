@@ -13,11 +13,7 @@ using System.Windows.Forms.VisualStyles;
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 using System.IO;
-using System.Runtime.CompilerServices;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using System.Security.Cryptography.X509Certificates;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
-using static BenchmarkForCcompiler.Profile;
+using DiffMatchPatch;
 
 namespace BenchmarkForCcompiler
 {
@@ -48,6 +44,16 @@ namespace BenchmarkForCcompiler
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            diff_match_patch dmp = new diff_match_patch();
+            dmp.Diff_Timeout = 0;
+            List<Diff> diff = dmp.diff_main("Goodbbbye World", "Goodbye World");
+            Console.WriteLine(diff[0]);
+            dmp.diff_cleanupEfficiency(diff);
+            for (int i = 0; i < diff.Count; i++)
+            {
+                Console.WriteLine(diff[i]);
+            }
+            Console.WriteLine( dmp.diff_prettyHtml(diff));
 
         }
 
