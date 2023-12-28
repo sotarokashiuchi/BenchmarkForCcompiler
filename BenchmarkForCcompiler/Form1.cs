@@ -44,16 +44,8 @@ namespace BenchmarkForCcompiler
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            diff_match_patch dmp = new diff_match_patch();
-            dmp.Diff_Timeout = 0;
-            List<Diff> diff = dmp.diff_main("Goodbbbye World", "Goodbye World");
-            Console.WriteLine(diff[0]);
-            dmp.diff_cleanupEfficiency(diff);
-            for (int i = 0; i < diff.Count; i++)
-            {
-                Console.WriteLine(diff[i]);
-            }
-            Console.WriteLine( dmp.diff_prettyHtml(diff));
+            Comparison comparison = new Comparison();
+            Console.WriteLine(comparison.GNUDiff("Hello World", "Helllo World Japan."));
 
         }
 
@@ -427,6 +419,16 @@ namespace BenchmarkForCcompiler
             }
             outputTextBox.Text = lines;
 
+        }
+    }
+
+    class Comparison
+    {
+        diff_match_patch dmp = new diff_match_patch();
+
+        public string GNUDiff(string textA, string textB)
+        {
+            return dmp.patch_toText(dmp.patch_make(textA, textB));
         }
     }
 }
