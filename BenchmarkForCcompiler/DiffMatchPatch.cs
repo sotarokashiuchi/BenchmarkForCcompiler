@@ -22,6 +22,8 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace DiffMatchPatch
 {
@@ -1571,29 +1573,37 @@ namespace DiffMatchPatch
             return html.ToString();
         }
 
-        public string diff_text(List<Diff> diffs)
+        public void diff_text(List<Diff> diffs, System.Windows.Forms.RichTextBox richTextBox)
         {
-            StringBuilder html = new StringBuilder();
+            int index = 0;
+            Color color = Color.Black;
+            richTextBox.Select(index, 0);
             foreach (Diff aDiff in diffs)
             {
-                string text = aDiff.text.Replace("&", "&amp;").Replace("<", "&lt;")
-                  .Replace(">", "&gt;").Replace("\n", "&para;<br>");
-                switch (aDiff.operation)
+                string[] text = aDiff.text.Split('\n');
+                for(int i=0; i<text.Length; i++)
                 {
-                    case Operation.INSERT:
-                        html.Append("<ins style=\"background:#e6ffe6;\">").Append(text)
-                            .Append("</ins>");
-                        break;
-                    case Operation.DELETE:
-                        html.Append("<del style=\"background:#ffe6e6;\">").Append(text)
-                            .Append("</del>");
-                        break;
-                    case Operation.EQUAL:
-                        html.Append("<span>").Append(text).Append("</span>");
-                        break;
+                    text[i] += Environment.NewLine;
+                    switch (aDiff.operation)
+                    {
+                        case Operation.INSERT:
+                            richTextBox.AppendText("+" + text[i]);
+                            color = Color.Green;
+                            break;
+                        case Operation.DELETE:
+                            richTextBox.AppendText("-" + text[i]);
+                            color = Color.Red;
+                            break;
+                        case Operation.EQUAL:
+                            richTextBox.AppendText(" " + text[i]);
+                            color = Color.Black;
+                            break;
+                    }
+                    richTextBox.Select(index, text[i].Length );
+                    index += text[i].Length;
+                    richTextBox.SelectionColor = color;
                 }
             }
-            return html.ToString();
         }
 
         /**
