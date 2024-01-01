@@ -1580,8 +1580,8 @@ namespace DiffMatchPatch
             richTextBox.Select(index, 0);
             foreach (Diff aDiff in diffs)
             {
-                string[] text = aDiff.text.Split('\n');
-                for(int i=0; i<text.Length; i++)
+                string[] text = aDiff.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                for (int i=0; i<text.Length; i++)
                 {
                     text[i] += Environment.NewLine;
                     switch (aDiff.operation)

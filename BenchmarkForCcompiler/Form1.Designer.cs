@@ -100,6 +100,7 @@
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.button15 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -526,9 +527,10 @@
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
+            this.flowLayoutPanel1.Controls.Add(this.richTextBox1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1664, 159);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1647, 463);
             this.flowLayoutPanel1.TabIndex = 28;
             // 
             // panel3
@@ -537,7 +539,7 @@
             this.panel3.Controls.Add(this.textBox4);
             this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.button4);
-            this.panel3.Location = new System.Drawing.Point(3, 168);
+            this.panel3.Location = new System.Drawing.Point(3, 472);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(692, 28);
             this.panel3.TabIndex = 29;
@@ -688,7 +690,7 @@
             this.表示ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1702, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1685, 24);
             this.menuStrip1.TabIndex = 43;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -781,7 +783,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 585F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1670, 816);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1653, 1109);
             this.tableLayoutPanel2.TabIndex = 46;
             // 
             // flowLayoutPanel2
@@ -789,9 +791,9 @@
             this.flowLayoutPanel2.Controls.Add(this.panel4);
             this.flowLayoutPanel2.Controls.Add(this.panel6);
             this.flowLayoutPanel2.Controls.Add(this.panel5);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 202);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 506);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1664, 571);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1647, 571);
             this.flowLayoutPanel2.TabIndex = 30;
             this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
@@ -813,12 +815,20 @@
             // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(3, 787);
+            this.button15.Location = new System.Drawing.Point(3, 1091);
             this.button15.Name = "button15";
-            this.button15.Size = new System.Drawing.Size(75, 23);
+            this.button15.Size = new System.Drawing.Size(75, 15);
             this.button15.TabIndex = 31;
             this.button15.Text = "button15";
             this.button15.UseVisualStyleBackColor = true;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(3, 162);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(1501, 298);
+            this.richTextBox1.TabIndex = 47;
+            this.richTextBox1.Text = "";
             // 
             // Form1
             // 
@@ -934,6 +944,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

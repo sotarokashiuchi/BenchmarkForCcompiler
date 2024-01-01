@@ -40,6 +40,13 @@ namespace BenchmarkForCcompiler
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // 比較表示
+            比較表示ToolStripMenuItem.PerformClick();
+
+            diff_match_patch diff_Match_Patch = new diff_match_patch();
+            diff_Match_Patch.diff_text(diff_Match_Patch.diff_main(textBox13.Text, textBox12.Text), richTextBox1);
+
+
             Comparison comparison = new Comparison();
             Console.WriteLine(comparison.GNUDiff("Hello World", "Helllo World Japan."));
             tableLayoutPanel2.Width = 000;
@@ -507,6 +514,11 @@ namespace BenchmarkForCcompiler
         public string GNUDiff(string textA, string textB)
         {
             return dmp.patch_toText(dmp.patch_make(textA, textB));
+        }
+
+        public void GitDiff(string  textA, string textB, System.Windows.Forms.RichTextBox richTextBox)
+        {
+            dmp.diff_text(dmp.diff_main(textA, textB), richTextBox);
         }
     }
 }
