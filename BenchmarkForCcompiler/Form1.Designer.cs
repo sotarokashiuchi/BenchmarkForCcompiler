@@ -29,11 +29,9 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -71,22 +69,16 @@
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
             this.button11 = new System.Windows.Forms.Button();
-            this.textBox11 = new System.Windows.Forms.TextBox();
             this.button12 = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
             this.button13 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
             this.button14 = new System.Windows.Forms.Button();
-            this.textBox16 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
-            this.textBox18 = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.実行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.全て実行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,12 +87,25 @@
             this.比較表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.diff表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.richTextBox3 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.button16 = new System.Windows.Forms.Button();
+            this.button19 = new System.Windows.Forms.Button();
+            this.button18 = new System.Windows.Forms.Button();
+            this.richTextBox9 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox7 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox8 = new System.Windows.Forms.RichTextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.richTextBox6 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox5 = new System.Windows.Forms.RichTextBox();
+            this.richTextBox4 = new System.Windows.Forms.RichTextBox();
             this.button15 = new System.Windows.Forms.Button();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -124,15 +129,6 @@
             this.button1.Text = "コンパイルA実行";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(15, 47);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox1.Size = new System.Drawing.Size(509, 79);
-            this.textBox1.TabIndex = 1;
             // 
             // button4
             // 
@@ -159,15 +155,6 @@
             this.label3.Size = new System.Drawing.Size(79, 12);
             this.label3.TabIndex = 8;
             this.label3.Text = "プログラムのパス";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(15, 375);
-            this.textBox5.Multiline = true;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox5.Size = new System.Drawing.Size(509, 129);
-            this.textBox5.TabIndex = 12;
             // 
             // button5
             // 
@@ -527,11 +514,18 @@
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.Controls.Add(this.panel1);
             this.flowLayoutPanel1.Controls.Add(this.panel2);
-            this.flowLayoutPanel1.Controls.Add(this.richTextBox1);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1647, 463);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1655, 159);
             this.flowLayoutPanel1.TabIndex = 28;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(15, 50);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(509, 76);
+            this.richTextBox1.TabIndex = 47;
+            this.richTextBox1.Text = "";
             // 
             // panel3
             // 
@@ -539,7 +533,7 @@
             this.panel3.Controls.Add(this.textBox4);
             this.panel3.Controls.Add(this.button7);
             this.panel3.Controls.Add(this.button4);
-            this.panel3.Location = new System.Drawing.Point(3, 472);
+            this.panel3.Location = new System.Drawing.Point(3, 168);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(692, 28);
             this.panel3.TabIndex = 29;
@@ -562,15 +556,6 @@
             this.label13.TabIndex = 33;
             this.label13.Text = "コンパイルの情報を表示します";
             // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(11, 375);
-            this.textBox10.Multiline = true;
-            this.textBox10.Name = "textBox10";
-            this.textBox10.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox10.Size = new System.Drawing.Size(509, 129);
-            this.textBox10.TabIndex = 32;
-            // 
             // button11
             // 
             this.button11.Location = new System.Drawing.Point(11, 341);
@@ -580,15 +565,6 @@
             this.button11.Text = "プログラムB実行";
             this.button11.UseVisualStyleBackColor = true;
             this.button11.Click += new System.EventHandler(this.button11_Click);
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(11, 47);
-            this.textBox11.Multiline = true;
-            this.textBox11.Name = "textBox11";
-            this.textBox11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox11.Size = new System.Drawing.Size(509, 79);
-            this.textBox11.TabIndex = 30;
             // 
             // button12
             // 
@@ -605,18 +581,9 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(153, 144);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(145, 12);
+            this.label14.Size = new System.Drawing.Size(111, 12);
             this.label14.TabIndex = 40;
-            this.label14.Text = "プログラムの出力を表示します";
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(11, 170);
-            this.textBox12.Multiline = true;
-            this.textBox12.Name = "textBox12";
-            this.textBox12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox12.Size = new System.Drawing.Size(509, 165);
-            this.textBox12.TabIndex = 39;
+            this.label14.Text = "アセンブラを表示します";
             // 
             // button13
             // 
@@ -633,18 +600,9 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(157, 144);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(145, 12);
+            this.label15.Size = new System.Drawing.Size(111, 12);
             this.label15.TabIndex = 37;
-            this.label15.Text = "プログラムの出力を表示します";
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(15, 170);
-            this.textBox13.Multiline = true;
-            this.textBox13.Name = "textBox13";
-            this.textBox13.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox13.Size = new System.Drawing.Size(509, 165);
-            this.textBox13.TabIndex = 36;
+            this.label15.Text = "アセンブラを表示します";
             // 
             // button14
             // 
@@ -656,33 +614,6 @@
             this.button14.UseVisualStyleBackColor = true;
             this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
-            // textBox16
-            // 
-            this.textBox16.Location = new System.Drawing.Point(3, 36);
-            this.textBox16.Multiline = true;
-            this.textBox16.Name = "textBox16";
-            this.textBox16.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox16.Size = new System.Drawing.Size(509, 79);
-            this.textBox16.TabIndex = 42;
-            // 
-            // textBox17
-            // 
-            this.textBox17.Location = new System.Drawing.Point(3, 159);
-            this.textBox17.Multiline = true;
-            this.textBox17.Name = "textBox17";
-            this.textBox17.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox17.Size = new System.Drawing.Size(509, 79);
-            this.textBox17.TabIndex = 42;
-            // 
-            // textBox18
-            // 
-            this.textBox18.Location = new System.Drawing.Point(3, 291);
-            this.textBox18.Multiline = true;
-            this.textBox18.Name = "textBox18";
-            this.textBox18.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBox18.Size = new System.Drawing.Size(509, 79);
-            this.textBox18.TabIndex = 42;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -690,7 +621,7 @@
             this.表示ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1685, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1787, 24);
             this.menuStrip1.TabIndex = 43;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -742,28 +673,131 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.button1);
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.richTextBox3);
+            this.panel4.Controls.Add(this.richTextBox2);
+            this.panel4.Controls.Add(this.richTextBox1);
             this.panel4.Controls.Add(this.button5);
-            this.panel4.Controls.Add(this.textBox5);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Controls.Add(this.label5);
             this.panel4.Controls.Add(this.button14);
-            this.panel4.Controls.Add(this.textBox13);
             this.panel4.Controls.Add(this.label15);
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(549, 536);
             this.panel4.TabIndex = 44;
             // 
+            // richTextBox3
+            // 
+            this.richTextBox3.Location = new System.Drawing.Point(15, 375);
+            this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.Size = new System.Drawing.Size(509, 129);
+            this.richTextBox3.TabIndex = 47;
+            this.richTextBox3.Text = "";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.Location = new System.Drawing.Point(15, 170);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(509, 165);
+            this.richTextBox2.TabIndex = 47;
+            this.richTextBox2.Text = "";
+            // 
             // panel5
             // 
-            this.panel5.Controls.Add(this.textBox16);
-            this.panel5.Controls.Add(this.textBox17);
-            this.panel5.Controls.Add(this.textBox18);
+            this.panel5.Controls.Add(this.button16);
+            this.panel5.Controls.Add(this.button19);
+            this.panel5.Controls.Add(this.button18);
+            this.panel5.Controls.Add(this.richTextBox9);
+            this.panel5.Controls.Add(this.richTextBox7);
+            this.panel5.Controls.Add(this.richTextBox8);
+            this.panel5.Controls.Add(this.label20);
+            this.panel5.Controls.Add(this.label18);
+            this.panel5.Controls.Add(this.label19);
             this.panel5.Location = new System.Drawing.Point(1089, 3);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(554, 397);
+            this.panel5.Size = new System.Drawing.Size(554, 536);
             this.panel5.TabIndex = 45;
+            // 
+            // button16
+            // 
+            this.button16.Location = new System.Drawing.Point(3, 344);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(129, 23);
+            this.button16.TabIndex = 49;
+            this.button16.Text = "プログラム実行";
+            this.button16.UseVisualStyleBackColor = true;
+            this.button16.Click += new System.EventHandler(this.button16_Click);
+            // 
+            // button19
+            // 
+            this.button19.Location = new System.Drawing.Point(3, 139);
+            this.button19.Name = "button19";
+            this.button19.Size = new System.Drawing.Size(129, 23);
+            this.button19.TabIndex = 49;
+            this.button19.Text = "アセンブラ表示";
+            this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
+            // 
+            // button18
+            // 
+            this.button18.Location = new System.Drawing.Point(0, 16);
+            this.button18.Name = "button18";
+            this.button18.Size = new System.Drawing.Size(132, 23);
+            this.button18.TabIndex = 48;
+            this.button18.Text = "コンパイル実行";
+            this.button18.UseVisualStyleBackColor = true;
+            this.button18.Click += new System.EventHandler(this.button18_Click);
+            // 
+            // richTextBox9
+            // 
+            this.richTextBox9.Location = new System.Drawing.Point(3, 372);
+            this.richTextBox9.Name = "richTextBox9";
+            this.richTextBox9.Size = new System.Drawing.Size(509, 129);
+            this.richTextBox9.TabIndex = 47;
+            this.richTextBox9.Text = "";
+            // 
+            // richTextBox7
+            // 
+            this.richTextBox7.Location = new System.Drawing.Point(3, 47);
+            this.richTextBox7.Name = "richTextBox7";
+            this.richTextBox7.Size = new System.Drawing.Size(509, 76);
+            this.richTextBox7.TabIndex = 47;
+            this.richTextBox7.Text = "";
+            // 
+            // richTextBox8
+            // 
+            this.richTextBox8.Location = new System.Drawing.Point(3, 167);
+            this.richTextBox8.Name = "richTextBox8";
+            this.richTextBox8.Size = new System.Drawing.Size(509, 165);
+            this.richTextBox8.TabIndex = 47;
+            this.richTextBox8.Text = "";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(145, 21);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(146, 12);
+            this.label20.TabIndex = 33;
+            this.label20.Text = "コンパイルの情報を表示します";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(145, 349);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(111, 12);
+            this.label18.TabIndex = 34;
+            this.label18.Text = "アセンブラを表示します";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(145, 144);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(111, 12);
+            this.label19.TabIndex = 40;
+            this.label19.Text = "アセンブラを表示します";
             // 
             // tableLayoutPanel2
             // 
@@ -783,7 +817,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 585F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1653, 1109);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1661, 1109);
             this.tableLayoutPanel2.TabIndex = 46;
             // 
             // flowLayoutPanel2
@@ -791,51 +825,67 @@
             this.flowLayoutPanel2.Controls.Add(this.panel4);
             this.flowLayoutPanel2.Controls.Add(this.panel6);
             this.flowLayoutPanel2.Controls.Add(this.panel5);
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 506);
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 202);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1647, 571);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1655, 545);
             this.flowLayoutPanel2.TabIndex = 30;
             this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
             // panel6
             // 
             this.panel6.Controls.Add(this.button12);
+            this.panel6.Controls.Add(this.richTextBox6);
             this.panel6.Controls.Add(this.button11);
-            this.panel6.Controls.Add(this.textBox11);
-            this.panel6.Controls.Add(this.textBox10);
+            this.panel6.Controls.Add(this.richTextBox5);
             this.panel6.Controls.Add(this.label13);
+            this.panel6.Controls.Add(this.richTextBox4);
             this.panel6.Controls.Add(this.label14);
             this.panel6.Controls.Add(this.label12);
             this.panel6.Controls.Add(this.button13);
-            this.panel6.Controls.Add(this.textBox12);
             this.panel6.Location = new System.Drawing.Point(558, 3);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(525, 536);
             this.panel6.TabIndex = 47;
             // 
+            // richTextBox6
+            // 
+            this.richTextBox6.Location = new System.Drawing.Point(11, 372);
+            this.richTextBox6.Name = "richTextBox6";
+            this.richTextBox6.Size = new System.Drawing.Size(509, 129);
+            this.richTextBox6.TabIndex = 47;
+            this.richTextBox6.Text = "";
+            // 
+            // richTextBox5
+            // 
+            this.richTextBox5.Location = new System.Drawing.Point(11, 167);
+            this.richTextBox5.Name = "richTextBox5";
+            this.richTextBox5.Size = new System.Drawing.Size(509, 165);
+            this.richTextBox5.TabIndex = 47;
+            this.richTextBox5.Text = "";
+            // 
+            // richTextBox4
+            // 
+            this.richTextBox4.Location = new System.Drawing.Point(11, 47);
+            this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.Size = new System.Drawing.Size(509, 76);
+            this.richTextBox4.TabIndex = 47;
+            this.richTextBox4.Text = "";
+            // 
             // button15
             // 
-            this.button15.Location = new System.Drawing.Point(3, 1091);
+            this.button15.Location = new System.Drawing.Point(3, 787);
             this.button15.Name = "button15";
             this.button15.Size = new System.Drawing.Size(75, 15);
             this.button15.TabIndex = 31;
             this.button15.Text = "button15";
             this.button15.UseVisualStyleBackColor = true;
             // 
-            // richTextBox1
-            // 
-            this.richTextBox1.Location = new System.Drawing.Point(3, 162);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1501, 298);
-            this.richTextBox1.TabIndex = 47;
-            this.richTextBox1.Text = "";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1702, 843);
+            this.ClientSize = new System.Drawing.Size(1804, 843);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -873,11 +923,9 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -914,23 +962,16 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox10;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.TextBox textBox11;
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.TextBox textBox14;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox12;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox13;
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.TextBox textBox15;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox16;
-        private System.Windows.Forms.TextBox textBox17;
-        private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem 実行ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 全て実行ToolStripMenuItem;
@@ -945,6 +986,20 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button button15;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBox3;
+        private System.Windows.Forms.RichTextBox richTextBox2;
+        private System.Windows.Forms.RichTextBox richTextBox6;
+        private System.Windows.Forms.RichTextBox richTextBox5;
+        private System.Windows.Forms.RichTextBox richTextBox4;
+        private System.Windows.Forms.RichTextBox richTextBox9;
+        private System.Windows.Forms.RichTextBox richTextBox7;
+        private System.Windows.Forms.RichTextBox richTextBox8;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button button18;
+        private System.Windows.Forms.Button button16;
+        private System.Windows.Forms.Button button19;
     }
 }
 

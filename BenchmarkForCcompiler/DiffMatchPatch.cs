@@ -426,7 +426,7 @@ namespace DiffMatchPatch
          * @param deadline Time when the diff should be complete by.
          * @return List of Diff objects.
          */
-        private List<Diff> diff_lineMode(string text1, string text2,
+        public List<Diff> diff_lineMode(string text1, string text2,
                                          DateTime deadline)
         {
             // Scan the text on a line-by-line basis first.

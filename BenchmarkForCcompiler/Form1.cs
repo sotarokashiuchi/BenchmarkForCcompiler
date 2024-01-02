@@ -33,9 +33,9 @@ namespace BenchmarkForCcompiler
 
             profileA.Initialize(comboBox1, button3, button6, textBox2, textBox3, textBox6, textBox15);
             profileB.Initialize(comboBox2, button9, button10, textBox7, textBox9, textBox8, textBox14);
-            compile.Initialize(textBox1, textBox4, textBox11, textBox4, textBox16);
-            asm.Initialize(textBox13, textBox15, textBox12, textBox14, textBox17);
-            executable.Initialize(textBox5, textBox6, textBox10, textBox8, textBox18);
+            compile.Initialize(richTextBox1, textBox4, richTextBox4, textBox4, richTextBox7);
+            asm.Initialize(richTextBox2, textBox15, richTextBox5, textBox14, richTextBox8);
+            executable.Initialize(richTextBox3, textBox6, richTextBox6, textBox8, richTextBox9);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,11 +44,15 @@ namespace BenchmarkForCcompiler
             比較表示ToolStripMenuItem.PerformClick();
 
             diff_match_patch diff_Match_Patch = new diff_match_patch();
-            diff_Match_Patch.diff_text(diff_Match_Patch.diff_main(textBox13.Text, textBox12.Text), richTextBox1);
+            diff_Match_Patch.diff_text(diff_Match_Patch.diff_main(richTextBox2.Text, richTextBox5.Text), richTextBox1);
 
-
+            Console.Write(diff_Match_Patch.diff_lineMode("Hello World", "Helllo World Japan.", DateTime.Now)[0]);
+            
             Comparison comparison = new Comparison();
             Console.WriteLine(comparison.GNUDiff("Hello World", "Helllo World Japan."));
+
+            
+
             tableLayoutPanel2.Width = 000;
             tableLayoutPanel2.Height = 000;
         }
@@ -225,6 +229,30 @@ namespace BenchmarkForCcompiler
         {
 
         }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            richTextBox7.Text = "";
+            compile.Run(ProfileStatus.ProfileA, profileA.GetNowProfile());
+            compile.Run(ProfileStatus.ProfileB, profileB.GetNowProfile());
+            compile.Comparison();
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            richTextBox8.Text = "";
+            asm.Show(ProfileStatus.ProfileA);
+            asm.Show(ProfileStatus.ProfileB);
+            asm.Comparison();
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            richTextBox9.Text = "";
+            executable.Run(ProfileStatus.ProfileA);
+            executable.Run(ProfileStatus.ProfileB);
+            executable.Comparison();
+        }
     }
 
     class Profile
@@ -394,28 +422,28 @@ namespace BenchmarkForCcompiler
 
     class Compile
     {
-        protected System.Windows.Forms.TextBox outputTextBox;
+        protected System.Windows.Forms.RichTextBox outputRichTextBox;
         protected System.Windows.Forms.TextBox inputFileNameTextBox;
-        protected System.Windows.Forms.TextBox ProfileA_OutputTextBox;
+        protected System.Windows.Forms.RichTextBox ProfileA_OutputRichTextBox;
         protected System.Windows.Forms.TextBox ProfileA_InputFileNameTextBox;
-        protected System.Windows.Forms.TextBox ProfileB_OutputTextBox;
+        protected System.Windows.Forms.RichTextBox ProfileB_OutputRichTextBox;
         protected System.Windows.Forms.TextBox ProfileB_InputFileNameTextBox;
-        protected System.Windows.Forms.TextBox ComparisonOutputTextBox;
+        protected System.Windows.Forms.RichTextBox ComparisonRichOutputTextBox;
         protected Comparison comparison = new Comparison();
 
         public void Initialize(
-            System.Windows.Forms.TextBox ProfileA_OutputTextBox,
+            System.Windows.Forms.RichTextBox ProfileA_OutputRichTextBox,
             System.Windows.Forms.TextBox ProfileA_InputFileNameTextBox,
-            System.Windows.Forms.TextBox ProfileB_OutputTextBox,
+            System.Windows.Forms.RichTextBox ProfileB_OutputRichTextBox,
             System.Windows.Forms.TextBox ProfileB_InputFileNameTextBox,
-            System.Windows.Forms.TextBox ComparisonOutputTextBox
+            System.Windows.Forms.RichTextBox ComparisonOutputRichTextBox
             )
         {
-            this.ProfileA_OutputTextBox = ProfileA_OutputTextBox;
+            this.ProfileA_OutputRichTextBox = ProfileA_OutputRichTextBox;
             this.ProfileA_InputFileNameTextBox = ProfileA_InputFileNameTextBox;
-            this.ProfileB_OutputTextBox = ProfileB_OutputTextBox;
+            this.ProfileB_OutputRichTextBox = ProfileB_OutputRichTextBox;
             this.ProfileB_InputFileNameTextBox = ProfileB_InputFileNameTextBox;
-            this.ComparisonOutputTextBox = ComparisonOutputTextBox;
+            this.ComparisonRichOutputTextBox = ComparisonOutputRichTextBox;
         }
 
         protected void switchProfile(ProfileStatus profileStatus)
@@ -423,11 +451,11 @@ namespace BenchmarkForCcompiler
             switch (profileStatus)
             {
                 case ProfileStatus.ProfileA:
-                    outputTextBox = ProfileA_OutputTextBox;
+                    outputRichTextBox = ProfileA_OutputRichTextBox;
                     inputFileNameTextBox = ProfileA_InputFileNameTextBox;
                     break;
                 case ProfileStatus.ProfileB:
-                    outputTextBox = ProfileB_OutputTextBox;
+                    outputRichTextBox = ProfileB_OutputRichTextBox;
                     inputFileNameTextBox = ProfileB_InputFileNameTextBox;
                     break;
                 default:
@@ -457,13 +485,15 @@ namespace BenchmarkForCcompiler
             {
                 lines += line + "\r\n";
             }
-            outputTextBox.Text = lines;
+            outputRichTextBox.Text = lines;
         }
 
         public void Comparison()
         {
-            string diff =  comparison.GNUDiff(ProfileA_OutputTextBox.Text, ProfileB_OutputTextBox.Text);
-            ComparisonOutputTextBox.Text = diff.Replace("\n", Environment.NewLine);
+            // string diff =  comparison.GNUDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text);
+            // ComparisonRichOutputTextBox.Text = diff.Replace("\n", Environment.NewLine);
+            comparison.GitDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text, ComparisonRichOutputTextBox);
+            
         }
 
     }
@@ -474,7 +504,7 @@ namespace BenchmarkForCcompiler
         {
             switchProfile(profileStatus);
             StreamReader sr = new StreamReader(inputFileNameTextBox.Text, Encoding.GetEncoding("UTF-8"));
-            outputTextBox.Text = sr.ReadToEnd();
+            outputRichTextBox.Text = sr.ReadToEnd();
             sr.Close();
 
         }
@@ -502,7 +532,7 @@ namespace BenchmarkForCcompiler
             {
                 lines += line + "\r\n";
             }
-            outputTextBox.Text = lines;
+            outputRichTextBox.Text = lines;
 
         }
     }
