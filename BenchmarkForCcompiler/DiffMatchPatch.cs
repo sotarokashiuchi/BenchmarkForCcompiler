@@ -1606,6 +1606,78 @@ namespace DiffMatchPatch
             }
         }
 
+        public void diff_textNewLine(List<Diff> diffs, System.Windows.Forms.RichTextBox richTextBox)
+        {
+            int index = 0;
+            Color color = Color.Black;
+            richTextBox.Select(index, 0);
+            foreach (Diff aDiff in diffs)
+            {
+                string[] text = aDiff.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                for (int i = 0; i < text.Length; i++)
+                {
+                    if (i != 0)
+                    {
+                        text[i] += Environment.NewLine;
+                    }
+                    switch (aDiff.operation)
+                    {
+                        case Operation.INSERT:
+                            color = Color.Green;
+                            break;
+                        case Operation.DELETE:
+                            color = Color.Red;
+                            break;
+                        case Operation.EQUAL:
+                            color = Color.Black;
+                            break;
+                    }
+                    richTextBox.AppendText(text[i]);
+                    richTextBox.Select(index, text[i].Length);
+                    index += text[i].Length;
+                    richTextBox.SelectionColor = color;
+                }
+            }
+        }
+
+        public void diff_line(List<Diff> diffs, System.Windows.Forms.RichTextBox richTextBox)
+        {
+            int index = 0;
+            int lineCount = 0;
+            Color color = Color.Black;
+            richTextBox.Select(index, 0);
+            foreach (Diff aDiff in diffs)
+            {
+                string[] text = aDiff.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+                for (int i = 0; i < text.Length; i++)
+                {
+                    if (i != 0)
+                    {
+                        text[i] += Environment.NewLine;
+                    }
+                    switch (aDiff.operation)
+                    {
+                        case Operation.INSERT:
+                            richTextBox.AppendText("+" + text[i]);
+                            color = Color.Green;
+                            break;
+                        case Operation.DELETE:
+                            richTextBox.AppendText("-" + text[i]);
+                            color = Color.Red;
+                            break;
+                        case Operation.EQUAL:
+                            richTextBox.AppendText(" " + text[i]);
+                            color = Color.Black;
+                            break;
+                    }
+                    richTextBox.Select(index, text[i].Length);
+                    index += text[i].Length;
+                    richTextBox.SelectionColor = color;
+                }
+            }
+
+        }
+
         /**
          * Compute and return the source text (all equalities and deletions).
          * @param diffs List of Diff objects.
