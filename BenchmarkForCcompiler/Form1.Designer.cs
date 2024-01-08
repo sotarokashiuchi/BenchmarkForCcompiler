@@ -82,6 +82,9 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.実行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.全て実行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.コンパイル実行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.アセンブラ表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.プログラム実行ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.表示モードToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.比較表示ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -516,7 +519,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1655, 159);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1621, 159);
             this.flowLayoutPanel1.TabIndex = 28;
             // 
             // richTextBox1
@@ -621,14 +624,17 @@
             this.表示ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1787, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1838, 24);
             this.menuStrip1.TabIndex = 43;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // 実行ToolStripMenuItem
             // 
             this.実行ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.全て実行ToolStripMenuItem});
+            this.全て実行ToolStripMenuItem,
+            this.コンパイル実行ToolStripMenuItem,
+            this.アセンブラ表示ToolStripMenuItem,
+            this.プログラム実行ToolStripMenuItem});
             this.実行ToolStripMenuItem.Name = "実行ToolStripMenuItem";
             this.実行ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
             this.実行ToolStripMenuItem.Text = "実行";
@@ -636,8 +642,27 @@
             // 全て実行ToolStripMenuItem
             // 
             this.全て実行ToolStripMenuItem.Name = "全て実行ToolStripMenuItem";
-            this.全て実行ToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
+            this.全て実行ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.全て実行ToolStripMenuItem.Text = "全て実行";
+            this.全て実行ToolStripMenuItem.Click += new System.EventHandler(this.全て実行ToolStripMenuItem_Click);
+            // 
+            // コンパイル実行ToolStripMenuItem
+            // 
+            this.コンパイル実行ToolStripMenuItem.Name = "コンパイル実行ToolStripMenuItem";
+            this.コンパイル実行ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.コンパイル実行ToolStripMenuItem.Text = "コンパイル実行";
+            // 
+            // アセンブラ表示ToolStripMenuItem
+            // 
+            this.アセンブラ表示ToolStripMenuItem.Name = "アセンブラ表示ToolStripMenuItem";
+            this.アセンブラ表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.アセンブラ表示ToolStripMenuItem.Text = "アセンブラ表示";
+            // 
+            // プログラム実行ToolStripMenuItem
+            // 
+            this.プログラム実行ToolStripMenuItem.Name = "プログラム実行ToolStripMenuItem";
+            this.プログラム実行ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.プログラム実行ToolStripMenuItem.Text = "プログラム実行";
             // 
             // 表示ToolStripMenuItem
             // 
@@ -653,20 +678,20 @@
             this.比較表示ToolStripMenuItem,
             this.diff表示ToolStripMenuItem});
             this.表示モードToolStripMenuItem.Name = "表示モードToolStripMenuItem";
-            this.表示モードToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.表示モードToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.表示モードToolStripMenuItem.Text = "表示モード";
             // 
             // 比較表示ToolStripMenuItem
             // 
             this.比較表示ToolStripMenuItem.Name = "比較表示ToolStripMenuItem";
-            this.比較表示ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.比較表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.比較表示ToolStripMenuItem.Text = "比較表示";
             this.比較表示ToolStripMenuItem.Click += new System.EventHandler(this.比較表示ToolStripMenuItem_Click);
             // 
             // diff表示ToolStripMenuItem
             // 
             this.diff表示ToolStripMenuItem.Name = "diff表示ToolStripMenuItem";
-            this.diff表示ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.diff表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.diff表示ToolStripMenuItem.Text = "Diff表示";
             this.diff表示ToolStripMenuItem.Click += new System.EventHandler(this.diff表示ToolStripMenuItem_Click);
             // 
@@ -713,7 +738,7 @@
             this.panel5.Controls.Add(this.label20);
             this.panel5.Controls.Add(this.label18);
             this.panel5.Controls.Add(this.label19);
-            this.panel5.Location = new System.Drawing.Point(1089, 3);
+            this.panel5.Location = new System.Drawing.Point(3, 545);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(554, 536);
             this.panel5.TabIndex = 45;
@@ -817,7 +842,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 585F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1661, 1109);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1627, 1109);
             this.tableLayoutPanel2.TabIndex = 46;
             // 
             // flowLayoutPanel2
@@ -827,7 +852,7 @@
             this.flowLayoutPanel2.Controls.Add(this.panel5);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 202);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1655, 545);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1621, 545);
             this.flowLayoutPanel2.TabIndex = 30;
             this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
@@ -885,7 +910,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1804, 843);
+            this.ClientSize = new System.Drawing.Size(1855, 843);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -1000,6 +1025,9 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.Button button16;
         private System.Windows.Forms.Button button19;
+        private System.Windows.Forms.ToolStripMenuItem コンパイル実行ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem アセンブラ表示ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem プログラム実行ToolStripMenuItem;
     }
 }
 

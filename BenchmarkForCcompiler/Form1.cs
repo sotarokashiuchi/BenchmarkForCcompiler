@@ -212,8 +212,9 @@ namespace BenchmarkForCcompiler
             diff表示ToolStripMenuItem.Checked = true;
             比較表示ToolStripMenuItem.Checked = false;
             changeViewMode(false);
-            compile.Comparison();
+            compile.Comparison(profileA.GetNowProfile(), profileB.GetNowProfile());
             asm.Comparison();
+            executable.Comparison();
         }
 
         private void changeViewMode(bool mode)
@@ -234,8 +235,9 @@ namespace BenchmarkForCcompiler
         {
             richTextBox7.Text = "";
             compile.Run(ProfileStatus.ProfileA, profileA.GetNowProfile());
-            compile.Run(ProfileStatus.ProfileB, profileB.GetNowProfile());
-            compile.Comparison();
+            compile.Run(ProfileStatus.ProfileB, profileB.GetNowProfile()); 
+            compile.Comparison(profileA.GetNowProfile(), profileB.GetNowProfile());
+
         }
 
         private void button19_Click(object sender, EventArgs e)
@@ -251,6 +253,13 @@ namespace BenchmarkForCcompiler
             richTextBox9.Text = "";
             executable.Run(ProfileStatus.ProfileA);
             executable.Run(ProfileStatus.ProfileB);
+            executable.Comparison();
+        }
+
+        private void 全て実行ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            compile.Comparison(profileA.GetNowProfile(), profileB.GetNowProfile());
+            asm.Comparison();
             executable.Comparison();
         }
     }
@@ -488,12 +497,28 @@ namespace BenchmarkForCcompiler
             outputRichTextBox.Text = lines;
         }
 
+        public void Run(ProfileStatus profileStatus)
+        {
+            return;
+        }
+
         public void Comparison()
         {
             // string diff =  comparison.GNUDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text);
             // ComparisonRichOutputTextBox.Text = diff.Replace("\n", Environment.NewLine);
+            Run(ProfileStatus.ProfileA);
+            Run(ProfileStatus.ProfileB);
             comparison.GitDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text, ComparisonRichOutputTextBox);
             
+        }
+
+        public void Comparison(Profile.ProfileInfo profileInfoA, Profile.ProfileInfo profileInfoB)
+        {
+            // string diff =  comparison.GNUDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text);
+            // ComparisonRichOutputTextBox.Text = diff.Replace("\n", Environment.NewLine);
+            Run(ProfileStatus.ProfileA, profileInfoA);
+            Run(ProfileStatus.ProfileB, profileInfoB);
+            comparison.GitDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text, ComparisonRichOutputTextBox);
         }
 
     }
