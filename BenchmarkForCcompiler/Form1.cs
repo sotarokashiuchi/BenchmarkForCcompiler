@@ -522,8 +522,37 @@ namespace BenchmarkForCcompiler
             psInfo.RedirectStandardError = true;
 
             Console.WriteLine(psInfo.FileName + psInfo.Arguments);
+            
+            Process p;
+            try
+            {
+                p = Process.Start(psInfo); // コマンドの実行開始
+            }
+            catch(InvalidOperationException ex)
+            {
+                // ファイル名を指定していない
+                MessageBox.Show(
+                    "「コンパイラのパス」が入力されていません。",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Console.WriteLine(ex.Message);
+                return;
+            }
+            catch (Win32Exception ex)
+            {
+                // ファイル名が正しくない
+                MessageBox.Show(
+                    "「コンパイラのパス」が正しくありません。",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Console.WriteLine(ex.Message);
+                return;
+            }
 
-            Process p = Process.Start(psInfo); // コマンドの実行開始
             string line = "";
             string lines = "";
             while ((line = p.StandardOutput.ReadLine()) != null || (line = p.StandardError.ReadLine()) != null)
@@ -548,10 +577,60 @@ namespace BenchmarkForCcompiler
         public override void Run(ProfileStatus profileStatus)
         {
             switchProfile(profileStatus);
-            StreamReader sr = new StreamReader(inputFileNameTextBox.Text, Encoding.GetEncoding("UTF-8"));
-            outputRichTextBox.Text = sr.ReadToEnd();
-            sr.Close();
-
+            StreamReader sr = null;
+            try
+            {
+                sr = new StreamReader(inputFileNameTextBox.Text, Encoding.GetEncoding("UTF-8"));
+                outputRichTextBox.Text = sr.ReadToEnd();
+                sr.Close();
+            }
+            catch (ArgumentException ex)
+            {
+                // ファイル名を指定していない
+                MessageBox.Show(
+                    "「アセンブラファイル名」が入力されていません。",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Console.WriteLine(ex.Message);
+            }
+            catch (FileNotFoundException ex)
+            {
+                // ファイル名が正しくない
+                MessageBox.Show(
+                    "「アセンブラファイル名」が正しくありません。",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Console.WriteLine(ex.Message);
+            }
+            catch (DirectoryNotFoundException ex)
+            {
+                // ファイル名が正しくない
+                MessageBox.Show(
+                    "「アセンブラファイル名」が正しくありません。",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Console.WriteLine(ex.Message);
+            }
+            catch(IOException ex) {
+                // ファイル名が不正
+                MessageBox.Show(
+                    "「アセンブラファイル名」に使用できない文字が含まれています",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                sr?.Close();
+            }
         }
     }
 
@@ -563,14 +642,43 @@ namespace BenchmarkForCcompiler
             switchProfile(profileStatus);
             // プログラムの実行
             ProcessStartInfo psInfo = new ProcessStartInfo();
-            psInfo.FileName = @"./" + inputFileNameTextBox.Text;
+            psInfo.FileName = inputFileNameTextBox.Text == "" ? "" : @"./" + inputFileNameTextBox.Text;
             psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
 
             Console.WriteLine(psInfo.FileName + psInfo.Arguments);
 
-            Process p = Process.Start(psInfo); // コマンドの実行開始
+            Process p;
+            try
+            {
+                p = Process.Start(psInfo); // コマンドの実行開始
+            }
+            catch (InvalidOperationException ex)
+            {
+                // ファイル名を指定していない
+                MessageBox.Show(
+                    "「実行ファイル名」が入力されていません。",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Console.WriteLine(ex.Message);
+                return;
+            }
+            catch (Win32Exception ex)
+            {
+                // ファイル名が正しくない
+                MessageBox.Show(
+                    "「実行ファイル名」が正しくありません。",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Console.WriteLine(ex.Message);
+                return;
+            }
+
             string line = "";
             string lines = "";
             while ((line = p.StandardOutput.ReadLine()) != null)

@@ -519,7 +519,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1588, 159);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1571, 159);
             this.flowLayoutPanel1.TabIndex = 28;
             // 
             // richTextBox1
@@ -845,7 +845,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 585F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1594, 1109);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1577, 1109);
             this.tableLayoutPanel2.TabIndex = 46;
             // 
             // flowLayoutPanel2
@@ -855,7 +855,7 @@
             this.flowLayoutPanel2.Controls.Add(this.panel5);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 202);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1588, 545);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1571, 545);
             this.flowLayoutPanel2.TabIndex = 30;
             this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
