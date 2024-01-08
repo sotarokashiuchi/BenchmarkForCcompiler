@@ -519,7 +519,7 @@
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1621, 159);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1588, 159);
             this.flowLayoutPanel1.TabIndex = 28;
             // 
             // richTextBox1
@@ -624,7 +624,7 @@
             this.表示ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1906, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1924, 24);
             this.menuStrip1.TabIndex = 43;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -651,18 +651,21 @@
             this.コンパイル実行ToolStripMenuItem.Name = "コンパイル実行ToolStripMenuItem";
             this.コンパイル実行ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.コンパイル実行ToolStripMenuItem.Text = "コンパイル実行";
+            this.コンパイル実行ToolStripMenuItem.Click += new System.EventHandler(this.コンパイル実行ToolStripMenuItem_Click);
             // 
             // アセンブラ表示ToolStripMenuItem
             // 
             this.アセンブラ表示ToolStripMenuItem.Name = "アセンブラ表示ToolStripMenuItem";
             this.アセンブラ表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.アセンブラ表示ToolStripMenuItem.Text = "アセンブラ表示";
+            this.アセンブラ表示ToolStripMenuItem.Click += new System.EventHandler(this.アセンブラ表示ToolStripMenuItem_Click);
             // 
             // プログラム実行ToolStripMenuItem
             // 
             this.プログラム実行ToolStripMenuItem.Name = "プログラム実行ToolStripMenuItem";
             this.プログラム実行ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.プログラム実行ToolStripMenuItem.Text = "プログラム実行";
+            this.プログラム実行ToolStripMenuItem.Click += new System.EventHandler(this.プログラム実行ToolStripMenuItem_Click);
             // 
             // 表示ToolStripMenuItem
             // 
@@ -842,7 +845,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 585F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 21F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1627, 1109);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1594, 1109);
             this.tableLayoutPanel2.TabIndex = 46;
             // 
             // flowLayoutPanel2
@@ -852,7 +855,7 @@
             this.flowLayoutPanel2.Controls.Add(this.panel5);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 202);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1621, 545);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1588, 545);
             this.flowLayoutPanel2.TabIndex = 30;
             this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
@@ -910,7 +913,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1923, 843);
+            this.ClientSize = new System.Drawing.Size(1941, 843);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;

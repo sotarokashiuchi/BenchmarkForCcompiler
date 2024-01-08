@@ -262,6 +262,24 @@ namespace BenchmarkForCcompiler
             asm.Comparison();
             executable.Comparison();
         }
+
+        private void コンパイル実行ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            compile.Run(ProfileStatus.ProfileA, profileA.GetNowProfile());
+            compile.Run(ProfileStatus.ProfileB, profileB.GetNowProfile());
+        }
+
+        private void アセンブラ表示ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            asm.Run(ProfileStatus.ProfileA);
+            asm.Run(ProfileStatus.ProfileB);
+        }
+
+        private void プログラム実行ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            executable.Run(ProfileStatus.ProfileA);
+            executable.Run(ProfileStatus.ProfileB);
+        }
     }
 
     class Profile
