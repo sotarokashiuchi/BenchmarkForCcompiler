@@ -144,7 +144,7 @@ namespace BenchmarkForCcompiler
 
         private void button12_Click(object sender, EventArgs e)
         {
-            compile.Run(ProfileStatus.ProfileB, profileA.GetNowProfile());
+            compile.Run(ProfileStatus.ProfileB, profileB.GetNowProfile());
         }
 
         private void button11_Click(object sender, EventArgs e)
@@ -186,12 +186,12 @@ namespace BenchmarkForCcompiler
 
         private void button14_Click(object sender, EventArgs e)
         {
-            asm.Show(ProfileStatus.ProfileA);
+            asm.Run(ProfileStatus.ProfileA);
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
-            asm.Show(ProfileStatus.ProfileB);
+            asm.Run(ProfileStatus.ProfileB);
         }
 
         private void button15_Click(object sender, EventArgs e)
@@ -243,8 +243,8 @@ namespace BenchmarkForCcompiler
         private void button19_Click(object sender, EventArgs e)
         {
             richTextBox8.Text = "";
-            asm.Show(ProfileStatus.ProfileA);
-            asm.Show(ProfileStatus.ProfileB);
+            asm.Run(ProfileStatus.ProfileA);
+            asm.Run(ProfileStatus.ProfileB);
             asm.Comparison();
         }
 
@@ -429,7 +429,7 @@ namespace BenchmarkForCcompiler
         ProfileB,
     }
 
-    class Compile
+    abstract class BuildBaseClass
     {
         protected System.Windows.Forms.RichTextBox outputRichTextBox;
         protected System.Windows.Forms.TextBox inputFileNameTextBox;
@@ -473,6 +473,24 @@ namespace BenchmarkForCcompiler
             }
         }
 
+        abstract public void Run(ProfileStatus profileStatus);
+
+        public void Comparison()
+        {
+            Run(ProfileStatus.ProfileA);
+            Run(ProfileStatus.ProfileB);
+            comparison.GitDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text, ComparisonRichOutputTextBox);
+
+        }
+    }
+
+    class Compile : BuildBaseClass
+    {
+        public override void Run(ProfileStatus profileStatus)
+        {
+            return;
+        }
+
         public void Run(ProfileStatus profileStatus, Profile.ProfileInfo profileInfo)
         {
             switchProfile(profileStatus);
@@ -496,22 +514,7 @@ namespace BenchmarkForCcompiler
             }
             outputRichTextBox.Text = lines;
         }
-
-        public void Run(ProfileStatus profileStatus)
-        {
-            return;
-        }
-
-        public void Comparison()
-        {
-            // string diff =  comparison.GNUDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text);
-            // ComparisonRichOutputTextBox.Text = diff.Replace("\n", Environment.NewLine);
-            Run(ProfileStatus.ProfileA);
-            Run(ProfileStatus.ProfileB);
-            comparison.GitDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text, ComparisonRichOutputTextBox);
-            
-        }
-
+        
         public void Comparison(Profile.ProfileInfo profileInfoA, Profile.ProfileInfo profileInfoB)
         {
             // string diff =  comparison.GNUDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text);
@@ -520,12 +523,11 @@ namespace BenchmarkForCcompiler
             Run(ProfileStatus.ProfileB, profileInfoB);
             comparison.GitDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text, ComparisonRichOutputTextBox);
         }
-
     }
 
-    class Asm : Compile
+    class Asm : BuildBaseClass
     {
-        public void Show(ProfileStatus profileStatus)
+        public override void Run(ProfileStatus profileStatus)
         {
             switchProfile(profileStatus);
             StreamReader sr = new StreamReader(inputFileNameTextBox.Text, Encoding.GetEncoding("UTF-8"));
@@ -535,10 +537,10 @@ namespace BenchmarkForCcompiler
         }
     }
 
-    class Executable : Compile
+    class Executable : BuildBaseClass
     {
         // 実行はコンパイルの処理も行う
-        public void Run(ProfileStatus profileStatus)
+        public override void Run(ProfileStatus profileStatus)
         {
             switchProfile(profileStatus);
             // プログラムの実行

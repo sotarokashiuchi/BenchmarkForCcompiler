@@ -624,7 +624,7 @@
             this.表示ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1838, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1906, 24);
             this.menuStrip1.TabIndex = 43;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -678,20 +678,20 @@
             this.比較表示ToolStripMenuItem,
             this.diff表示ToolStripMenuItem});
             this.表示モードToolStripMenuItem.Name = "表示モードToolStripMenuItem";
-            this.表示モードToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.表示モードToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.表示モードToolStripMenuItem.Text = "表示モード";
             // 
             // 比較表示ToolStripMenuItem
             // 
             this.比較表示ToolStripMenuItem.Name = "比較表示ToolStripMenuItem";
-            this.比較表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.比較表示ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.比較表示ToolStripMenuItem.Text = "比較表示";
             this.比較表示ToolStripMenuItem.Click += new System.EventHandler(this.比較表示ToolStripMenuItem_Click);
             // 
             // diff表示ToolStripMenuItem
             // 
             this.diff表示ToolStripMenuItem.Name = "diff表示ToolStripMenuItem";
-            this.diff表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.diff表示ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.diff表示ToolStripMenuItem.Text = "Diff表示";
             this.diff表示ToolStripMenuItem.Click += new System.EventHandler(this.diff表示ToolStripMenuItem_Click);
             // 
@@ -910,7 +910,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1855, 843);
+            this.ClientSize = new System.Drawing.Size(1923, 843);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
