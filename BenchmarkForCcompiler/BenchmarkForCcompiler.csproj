@@ -101,9 +101,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="testcase\profile\file.txt" />
-    <Content Include="testcase\profile\file2.txt" />
-    <Content Include="testcase\profile\fileO0.txt" />
     <Content Include="testcase\program\a.exe" />
     <Content Include="testcase\program\print.c" />
   </ItemGroup>
@@ -118,6 +115,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

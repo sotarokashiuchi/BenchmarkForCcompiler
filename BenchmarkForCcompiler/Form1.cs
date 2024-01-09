@@ -40,6 +40,11 @@ namespace BenchmarkForCcompiler
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // temp directory 作成
+            Directory.CreateDirectory(@"tempA");
+            Directory.CreateDirectory(@"tempB");
+            
+
             // 比較表示
             比較表示ToolStripMenuItem.PerformClick();
 
@@ -55,6 +60,14 @@ namespace BenchmarkForCcompiler
 
             tableLayoutPanel2.Width = 000;
             tableLayoutPanel2.Height = 000;
+            flowLayoutPanel2.Width = flowLayoutPanel2.Height = 0;
+            tableLayoutPanel2.Refresh();
+        }
+
+        private void Form1_Close(object sender, EventArgs e)
+        {
+            Directory.Delete(@"tempA", true);
+            Directory.Delete(@"tempB", true);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -309,7 +322,7 @@ namespace BenchmarkForCcompiler
         private System.Windows.Forms.TextBox optionTextBox;
         private System.Windows.Forms.TextBox executableFileNameTextBox;
         private System.Windows.Forms.TextBox asmFileNameTextBox;
-        private string profilePath = @"C:\\Users\\sotar\\Desktop\\BenchmarkForCcompiler\\BenchmarkForCcompiler\\testcase\\profile\\";
+        private string profilePath = @"profile\\";
 
         public void Initialize(
             System.Windows.Forms.ComboBox comboBox,
