@@ -41,8 +41,8 @@ namespace BenchmarkForCcompiler
         private void Form1_Load(object sender, EventArgs e)
         {
             // temp directory 作成
-            Directory.CreateDirectory(@"tempA");
-            Directory.CreateDirectory(@"tempB");
+            Directory.CreateDirectory(@"temp" + ProfileStatus.ProfileA);
+            Directory.CreateDirectory(@"temp" + ProfileStatus.ProfileB);
             
 
             // 比較表示
@@ -66,8 +66,8 @@ namespace BenchmarkForCcompiler
 
         private void Form1_Close(object sender, EventArgs e)
         {
-            Directory.Delete(@"tempA", true);
-            Directory.Delete(@"tempB", true);
+            Directory.Delete(@"temp" + ProfileStatus.ProfileA, true);
+            Directory.Delete(@"temp" + ProfileStatus.ProfileB, true);
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -533,6 +533,7 @@ namespace BenchmarkForCcompiler
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
             psInfo.RedirectStandardError = true;
+            psInfo.WorkingDirectory = @"temp" + profileStatus;
 
             Console.WriteLine(psInfo.FileName + psInfo.Arguments);
             
@@ -593,7 +594,7 @@ namespace BenchmarkForCcompiler
             StreamReader sr = null;
             try
             {
-                sr = new StreamReader(inputFileNameTextBox.Text, Encoding.GetEncoding("UTF-8"));
+                sr = new StreamReader(@"temp" + profileStatus + @"\" + inputFileNameTextBox.Text, Encoding.GetEncoding("UTF-8"));
                 outputRichTextBox.Text = sr.ReadToEnd();
                 sr.Close();
             }
@@ -612,7 +613,7 @@ namespace BenchmarkForCcompiler
             {
                 // ファイル名が正しくない
                 MessageBox.Show(
-                    "「アセンブラファイル名」が正しくありません。",
+                    "「アセンブラファイル名」が存在しません。",
                     "エラー",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -623,7 +624,7 @@ namespace BenchmarkForCcompiler
             {
                 // ファイル名が正しくない
                 MessageBox.Show(
-                    "「アセンブラファイル名」が正しくありません。",
+                    "「アセンブラファイル名」が存在しません。",
                     "エラー",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
@@ -655,7 +656,7 @@ namespace BenchmarkForCcompiler
             switchProfile(profileStatus);
             // プログラムの実行
             ProcessStartInfo psInfo = new ProcessStartInfo();
-            psInfo.FileName = inputFileNameTextBox.Text == "" ? "" : @"./" + inputFileNameTextBox.Text;
+            psInfo.FileName = inputFileNameTextBox.Text == "" ? "" : @"temp" + profileStatus + @"\" + inputFileNameTextBox.Text;
             psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
@@ -683,7 +684,7 @@ namespace BenchmarkForCcompiler
             {
                 // ファイル名が正しくない
                 MessageBox.Show(
-                    "「実行ファイル名」が正しくありません。",
+                    "「実行ファイル名」が存在しません。",
                     "エラー",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error
