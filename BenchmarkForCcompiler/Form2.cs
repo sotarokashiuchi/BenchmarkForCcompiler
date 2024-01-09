@@ -99,20 +99,55 @@ namespace BenchmarkForCcompiler
                 sr?.Close();
             }
 
-            if (FilePath == null || FilePath == "")
-            {
-                this.Text = "New File";
-            }
-            else
-            {
-                this.Text = FilePath;
-            }
+            textBoxSave();
             this.Show();
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // 保存しますか？
+            if (textBoxChange == true)
+            {
+                if (FilePath == null || FilePath == "")
+                {
+                    // 名前をつけて保存
+                    switch (MessageBox.Show(
+                        "ファイルが未保存です。名前をつけて保存しますか？",
+                        "警告",
+                        MessageBoxButtons.YesNoCancel,
+                        MessageBoxIcon.Warning
+                    ))
+                    {
+                        case DialogResult.Yes:
+                            名前を付けて保存ToolStripMenuItem.PerformClick();
+                            break;
+                        case DialogResult.No:
+                            break;
+                        case DialogResult.Cancel:
+                            e.Cancel = true;
+                            return;
+                    }
+                }
+                else
+                {
+                    // 上書き保存
+                    switch (MessageBox.Show(
+                        "ファイルが未保存です。上書き保存しますか？",
+                        "警告",
+                        MessageBoxButtons.YesNoCancel,
+                        MessageBoxIcon.Warning
+                    ))
+                    {
+                        case DialogResult.Yes:
+                            上書保存ToolStripMenuItem.PerformClick();
+                            break;
+                        case DialogResult.No:
+                            break;
+                        case DialogResult.Cancel:
+                            e.Cancel = true;
+                            return;
+                    }
+                }
+            }
 
             // フォームを隠す
             this.Hide();
@@ -122,9 +157,44 @@ namespace BenchmarkForCcompiler
         private void 上書保存ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // 上書保存
-            StreamWriter streamWriter = new StreamWriter(FilePath, false);
-            streamWriter.Write(richTextBox1.Text);
-            streamWriter.Close();
+            if (FilePath == null || FilePath == "")
+            {
+                名前を付けて保存ToolStripMenuItem.PerformClick();
+                return;
+            }
+            StreamWriter streamWriter = null;
+            try {
+                streamWriter = new StreamWriter(FilePath, false, Encoding.GetEncoding("UTF-8"));
+                streamWriter.Write(richTextBox1.Text);
+                streamWriter.Close();
+                textBoxSave();
+            }
+            catch (ArgumentNullException ex)
+            {
+                // ファイル名を指定していない
+                MessageBox.Show(
+                    "「ファイルパス」が正しくありません。",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Console.WriteLine(ex.Message);
+            }
+            catch(ArgumentException ex)
+            {
+                // 書き込み権限がない
+                MessageBox.Show(
+                    "ファイルの書き込み権限がありません。",
+                    "エラー",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                streamWriter?.Close();
+            }
         }
 
         private void 名前を付けて保存ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -132,18 +202,15 @@ namespace BenchmarkForCcompiler
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // 上書保存
                 FilePath = saveFileDialog.FileName;
-                StreamWriter streamWriter = new StreamWriter(FilePath, false);
-                streamWriter.Write(richTextBox1.Text);
-                streamWriter.Close();
+                上書保存ToolStripMenuItem.PerformClick();
             }
         }
 
         private void ファイルを開くToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 FilePath = openFileDialog.FileName;
                 this.Road();
@@ -159,7 +226,7 @@ namespace BenchmarkForCcompiler
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             textBoxChange = true;
-            
+
             if (FilePath == null || FilePath == "")
             {
                 this.Text = "New File" + " *";
@@ -167,6 +234,19 @@ namespace BenchmarkForCcompiler
             else
             {
                 this.Text = FilePath + " *";
+            }
+        }
+
+        private void textBoxSave()
+        {
+            textBoxChange = false;
+            if (FilePath == null || FilePath == "")
+            {
+                this.Text = "New File";
+            }
+            else
+            {
+                this.Text = FilePath;
             }
         }
     }
