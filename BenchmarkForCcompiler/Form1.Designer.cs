@@ -234,6 +234,7 @@ namespace BenchmarkForCcompiler
             this.button7.TabIndex = 23;
             this.button7.Text = "編集";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // textBox3
             // 
@@ -913,8 +914,8 @@ namespace BenchmarkForCcompiler
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_Close);
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.FormClosed += new FormClosedEventHandler(this.Form1_Close);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.panel1.ResumeLayout(false);

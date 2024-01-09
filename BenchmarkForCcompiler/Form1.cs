@@ -26,6 +26,7 @@ namespace BenchmarkForCcompiler
         Asm asm = new Asm();
         Executable executable = new Executable();
         Executable ExecutableB = new Executable();
+        Form2 form2 = new Form2();
 
         public Form1()
         {
@@ -292,6 +293,14 @@ namespace BenchmarkForCcompiler
         {
             executable.Run(ProfileStatus.ProfileA);
             executable.Run(ProfileStatus.ProfileB);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            form2.FilePath = textBox4.Text;
+            // Console.WriteLine(form2.FilePath);
+            // form2.Show();
+            form2.Road();
         }
     }
 
