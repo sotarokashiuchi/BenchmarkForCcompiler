@@ -7,7 +7,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BenchmarkForCcompiler
 {
@@ -99,8 +101,48 @@ namespace BenchmarkForCcompiler
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
+            // 保存しますか？
+
+            // フォームを隠す
             this.Hide();
             e.Cancel = true;
+        }
+
+        private void 上書保存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // 上書保存
+            StreamWriter streamWriter = new StreamWriter(FilePath, false);
+            streamWriter.Write(richTextBox1.Text);
+            streamWriter.Close();
+        }
+
+        private void 名前を付けて保存ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // 上書保存
+                FilePath = saveFileDialog.FileName;
+                StreamWriter streamWriter = new StreamWriter(FilePath, false);
+                streamWriter.Write(richTextBox1.Text);
+                streamWriter.Close();
+            }
+        }
+
+        private void ファイルを開くToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                FilePath = openFileDialog.FileName;
+                this.Road();
+            }
+        }
+
+        private void 新規作成ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FilePath = "";
+            richTextBox1.Text = "";
         }
     }
 }
