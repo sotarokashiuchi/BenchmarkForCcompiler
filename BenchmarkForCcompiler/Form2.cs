@@ -13,9 +13,10 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace BenchmarkForCcompiler
 {
-    public partial class Form2 : Form
+    public partial class Form2 : System.Windows.Forms.Form
     {
         public string FilePath;
+        private bool textBoxChange = false;
 
         public Form2()
         {
@@ -25,6 +26,7 @@ namespace BenchmarkForCcompiler
         public void Road()
         {
             Console.WriteLine(FilePath);
+            richTextBox1.Text = "";
             StreamReader sr = null;
             try
             {
@@ -96,6 +98,15 @@ namespace BenchmarkForCcompiler
             {
                 sr?.Close();
             }
+
+            if (FilePath == null || FilePath == "")
+            {
+                this.Text = "New File";
+            }
+            else
+            {
+                this.Text = FilePath;
+            }
             this.Show();
         }
 
@@ -143,6 +154,20 @@ namespace BenchmarkForCcompiler
         {
             FilePath = "";
             richTextBox1.Text = "";
+        }
+
+        private void richTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            textBoxChange = true;
+            
+            if (FilePath == null || FilePath == "")
+            {
+                this.Text = "New File" + " *";
+            }
+            else
+            {
+                this.Text = FilePath + " *";
+            }
         }
     }
 }

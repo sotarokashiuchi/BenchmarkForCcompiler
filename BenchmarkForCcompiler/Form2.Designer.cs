@@ -31,10 +31,10 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.上書保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.名前を付けて保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.新規作成ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ファイルを開くToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.上書保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.名前を付けて保存ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,11 +44,12 @@
             this.richTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBox1.Location = new System.Drawing.Point(12, 27);
+            this.richTextBox1.Location = new System.Drawing.Point(0, 27);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(776, 411);
+            this.richTextBox1.Size = new System.Drawing.Size(800, 423);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
+            this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
             // menuStrip1
             // 
@@ -71,6 +72,22 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
             this.toolStripMenuItem1.Text = "ファイル(&F)";
             // 
+            // 新規作成ToolStripMenuItem
+            // 
+            this.新規作成ToolStripMenuItem.Name = "新規作成ToolStripMenuItem";
+            this.新規作成ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.新規作成ToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.新規作成ToolStripMenuItem.Text = "新規作成(&N)";
+            this.新規作成ToolStripMenuItem.Click += new System.EventHandler(this.新規作成ToolStripMenuItem_Click);
+            // 
+            // ファイルを開くToolStripMenuItem
+            // 
+            this.ファイルを開くToolStripMenuItem.Name = "ファイルを開くToolStripMenuItem";
+            this.ファイルを開くToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.ファイルを開くToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.ファイルを開くToolStripMenuItem.Text = "ファイルを開く(&O)...";
+            this.ファイルを開くToolStripMenuItem.Click += new System.EventHandler(this.ファイルを開くToolStripMenuItem_Click);
+            // 
             // 上書保存ToolStripMenuItem
             // 
             this.上書保存ToolStripMenuItem.Name = "上書保存ToolStripMenuItem";
@@ -88,22 +105,6 @@
             this.名前を付けて保存ToolStripMenuItem.Text = "名前を付けて保存(&A)";
             this.名前を付けて保存ToolStripMenuItem.Click += new System.EventHandler(this.名前を付けて保存ToolStripMenuItem_Click);
             // 
-            // 新規作成ToolStripMenuItem
-            // 
-            this.新規作成ToolStripMenuItem.Name = "新規作成ToolStripMenuItem";
-            this.新規作成ToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.新規作成ToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.新規作成ToolStripMenuItem.Text = "新規作成(&N)";
-            this.新規作成ToolStripMenuItem.Click += new System.EventHandler(this.新規作成ToolStripMenuItem_Click);
-            // 
-            // ファイルを開くToolStripMenuItem
-            // 
-            this.ファイルを開くToolStripMenuItem.Name = "ファイルを開くToolStripMenuItem";
-            this.ファイルを開くToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.ファイルを開くToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
-            this.ファイルを開くToolStripMenuItem.Text = "ファイルを開く(&O)...";
-            this.ファイルを開くToolStripMenuItem.Click += new System.EventHandler(this.ファイルを開くToolStripMenuItem_Click);
-            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -113,7 +114,7 @@
             this.Controls.Add(this.richTextBox1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
