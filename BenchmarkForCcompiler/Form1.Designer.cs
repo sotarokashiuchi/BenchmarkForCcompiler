@@ -638,35 +638,39 @@ namespace BenchmarkForCcompiler
             this.アセンブラ表示ToolStripMenuItem,
             this.プログラム実行ToolStripMenuItem});
             this.実行ToolStripMenuItem.Name = "実行ToolStripMenuItem";
-            this.実行ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.実行ToolStripMenuItem.Text = "実行";
+            this.実行ToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.実行ToolStripMenuItem.Text = "実行(&R)";
             // 
             // 全て実行ToolStripMenuItem
             // 
             this.全て実行ToolStripMenuItem.Name = "全て実行ToolStripMenuItem";
-            this.全て実行ToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.全て実行ToolStripMenuItem.Text = "全て実行";
+            this.全て実行ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.全て実行ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.全て実行ToolStripMenuItem.Text = "全て実行(&R)";
             this.全て実行ToolStripMenuItem.Click += new System.EventHandler(this.全て実行ToolStripMenuItem_Click);
             // 
             // コンパイル実行ToolStripMenuItem
             // 
             this.コンパイル実行ToolStripMenuItem.Name = "コンパイル実行ToolStripMenuItem";
-            this.コンパイル実行ToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.コンパイル実行ToolStripMenuItem.Text = "コンパイル実行";
+            this.コンパイル実行ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
+            this.コンパイル実行ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.コンパイル実行ToolStripMenuItem.Text = "コンパイル実行(&C)";
             this.コンパイル実行ToolStripMenuItem.Click += new System.EventHandler(this.コンパイル実行ToolStripMenuItem_Click);
             // 
             // アセンブラ表示ToolStripMenuItem
             // 
             this.アセンブラ表示ToolStripMenuItem.Name = "アセンブラ表示ToolStripMenuItem";
-            this.アセンブラ表示ToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.アセンブラ表示ToolStripMenuItem.Text = "アセンブラ表示";
+            this.アセンブラ表示ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
+            this.アセンブラ表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.アセンブラ表示ToolStripMenuItem.Text = "アセンブラ表示(&A)";
             this.アセンブラ表示ToolStripMenuItem.Click += new System.EventHandler(this.アセンブラ表示ToolStripMenuItem_Click);
             // 
             // プログラム実行ToolStripMenuItem
             // 
             this.プログラム実行ToolStripMenuItem.Name = "プログラム実行ToolStripMenuItem";
-            this.プログラム実行ToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.プログラム実行ToolStripMenuItem.Text = "プログラム実行";
+            this.プログラム実行ToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
+            this.プログラム実行ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.プログラム実行ToolStripMenuItem.Text = "プログラム実行(&E)";
             this.プログラム実行ToolStripMenuItem.Click += new System.EventHandler(this.プログラム実行ToolStripMenuItem_Click);
             // 
             // 表示ToolStripMenuItem
@@ -674,8 +678,8 @@ namespace BenchmarkForCcompiler
             this.表示ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.表示モードToolStripMenuItem});
             this.表示ToolStripMenuItem.Name = "表示ToolStripMenuItem";
-            this.表示ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.表示ToolStripMenuItem.Text = "表示";
+            this.表示ToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
+            this.表示ToolStripMenuItem.Text = "表示(&V)";
             // 
             // 表示モードToolStripMenuItem
             // 
@@ -683,21 +687,21 @@ namespace BenchmarkForCcompiler
             this.比較表示ToolStripMenuItem,
             this.diff表示ToolStripMenuItem});
             this.表示モードToolStripMenuItem.Name = "表示モードToolStripMenuItem";
-            this.表示モードToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.表示モードToolStripMenuItem.Text = "表示モード";
+            this.表示モードToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.表示モードToolStripMenuItem.Text = "表示モード(&M)";
             // 
             // 比較表示ToolStripMenuItem
             // 
             this.比較表示ToolStripMenuItem.Name = "比較表示ToolStripMenuItem";
-            this.比較表示ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.比較表示ToolStripMenuItem.Text = "比較表示";
+            this.比較表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.比較表示ToolStripMenuItem.Text = "比較表示(&C)";
             this.比較表示ToolStripMenuItem.Click += new System.EventHandler(this.比較表示ToolStripMenuItem_Click);
             // 
             // diff表示ToolStripMenuItem
             // 
             this.diff表示ToolStripMenuItem.Name = "diff表示ToolStripMenuItem";
-            this.diff表示ToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.diff表示ToolStripMenuItem.Text = "Diff表示";
+            this.diff表示ToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.diff表示ToolStripMenuItem.Text = "Diff表示(&D)";
             this.diff表示ToolStripMenuItem.Click += new System.EventHandler(this.diff表示ToolStripMenuItem_Click);
             // 
             // panel4
