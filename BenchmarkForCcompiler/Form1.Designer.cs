@@ -162,7 +162,7 @@ namespace BenchmarkForCcompiler
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(15, 341);
+            this.button5.Location = new System.Drawing.Point(15, 431);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(132, 28);
             this.button5.TabIndex = 11;
@@ -182,7 +182,7 @@ namespace BenchmarkForCcompiler
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(157, 349);
+            this.label5.Location = new System.Drawing.Point(157, 439);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(145, 12);
             this.label5.TabIndex = 14;
@@ -521,7 +521,7 @@ namespace BenchmarkForCcompiler
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1669, 159);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1086, 159);
             this.flowLayoutPanel1.TabIndex = 28;
             // 
             // richTextBox1
@@ -546,7 +546,7 @@ namespace BenchmarkForCcompiler
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(153, 349);
+            this.label12.Location = new System.Drawing.Point(153, 439);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(145, 12);
             this.label12.TabIndex = 34;
@@ -563,7 +563,7 @@ namespace BenchmarkForCcompiler
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(11, 341);
+            this.button11.Location = new System.Drawing.Point(11, 431);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(132, 28);
             this.button11.TabIndex = 31;
@@ -626,7 +626,7 @@ namespace BenchmarkForCcompiler
             this.表示ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1699, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1116, 24);
             this.menuStrip1.TabIndex = 43;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -713,12 +713,12 @@ namespace BenchmarkForCcompiler
             this.panel4.Controls.Add(this.label15);
             this.panel4.Location = new System.Drawing.Point(3, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(549, 536);
+            this.panel4.Size = new System.Drawing.Size(549, 598);
             this.panel4.TabIndex = 44;
             // 
             // richTextBox3
             // 
-            this.richTextBox3.Location = new System.Drawing.Point(15, 375);
+            this.richTextBox3.Location = new System.Drawing.Point(15, 465);
             this.richTextBox3.Name = "richTextBox3";
             this.richTextBox3.Size = new System.Drawing.Size(509, 129);
             this.richTextBox3.TabIndex = 47;
@@ -728,7 +728,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox2.Location = new System.Drawing.Point(15, 170);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(509, 165);
+            this.richTextBox2.Size = new System.Drawing.Size(509, 255);
             this.richTextBox2.TabIndex = 47;
             this.richTextBox2.Text = "";
             // 
@@ -749,7 +749,7 @@ namespace BenchmarkForCcompiler
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 585F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1675, 784);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1092, 814);
             this.tableLayoutPanel2.TabIndex = 46;
             // 
             // flowLayoutPanel2
@@ -762,7 +762,7 @@ namespace BenchmarkForCcompiler
             this.flowLayoutPanel2.Controls.Add(this.panel5);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 202);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1669, 542);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1086, 609);
             this.flowLayoutPanel2.TabIndex = 30;
             this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
@@ -779,12 +779,12 @@ namespace BenchmarkForCcompiler
             this.panel6.Controls.Add(this.button13);
             this.panel6.Location = new System.Drawing.Point(558, 3);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(525, 536);
+            this.panel6.Size = new System.Drawing.Size(525, 598);
             this.panel6.TabIndex = 47;
             // 
             // richTextBox6
             // 
-            this.richTextBox6.Location = new System.Drawing.Point(11, 372);
+            this.richTextBox6.Location = new System.Drawing.Point(11, 462);
             this.richTextBox6.Name = "richTextBox6";
             this.richTextBox6.Size = new System.Drawing.Size(509, 129);
             this.richTextBox6.TabIndex = 47;
@@ -794,7 +794,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox5.Location = new System.Drawing.Point(11, 167);
             this.richTextBox5.Name = "richTextBox5";
-            this.richTextBox5.Size = new System.Drawing.Size(509, 165);
+            this.richTextBox5.Size = new System.Drawing.Size(509, 258);
             this.richTextBox5.TabIndex = 47;
             this.richTextBox5.Text = "";
             // 
@@ -817,14 +817,14 @@ namespace BenchmarkForCcompiler
             this.panel5.Controls.Add(this.label20);
             this.panel5.Controls.Add(this.label18);
             this.panel5.Controls.Add(this.label19);
-            this.panel5.Location = new System.Drawing.Point(1089, 3);
+            this.panel5.Location = new System.Drawing.Point(3, 607);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(554, 536);
+            this.panel5.Size = new System.Drawing.Size(554, 598);
             this.panel5.TabIndex = 45;
             // 
             // button16
             // 
-            this.button16.Location = new System.Drawing.Point(16, 344);
+            this.button16.Location = new System.Drawing.Point(16, 434);
             this.button16.Name = "button16";
             this.button16.Size = new System.Drawing.Size(129, 23);
             this.button16.TabIndex = 49;
@@ -854,7 +854,7 @@ namespace BenchmarkForCcompiler
             // 
             // richTextBox9
             // 
-            this.richTextBox9.Location = new System.Drawing.Point(16, 372);
+            this.richTextBox9.Location = new System.Drawing.Point(16, 462);
             this.richTextBox9.Name = "richTextBox9";
             this.richTextBox9.Size = new System.Drawing.Size(509, 129);
             this.richTextBox9.TabIndex = 47;
@@ -872,7 +872,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox8.Location = new System.Drawing.Point(16, 167);
             this.richTextBox8.Name = "richTextBox8";
-            this.richTextBox8.Size = new System.Drawing.Size(509, 165);
+            this.richTextBox8.Size = new System.Drawing.Size(509, 258);
             this.richTextBox8.TabIndex = 47;
             this.richTextBox8.Text = "";
             // 
@@ -888,7 +888,7 @@ namespace BenchmarkForCcompiler
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(158, 349);
+            this.label18.Location = new System.Drawing.Point(158, 439);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(111, 12);
             this.label18.TabIndex = 34;
@@ -908,7 +908,7 @@ namespace BenchmarkForCcompiler
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1699, 853);
+            this.ClientSize = new System.Drawing.Size(1116, 853);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
