@@ -24,6 +24,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DiffMatchPatch
 {
@@ -1573,36 +1574,124 @@ namespace DiffMatchPatch
             return html.ToString();
         }
 
+        enum diffStatus
+        {
+            INSERT,
+            DELETE,
+            EQUAL,
+            CHANGE,
+        }
+
+        private struct Line
+        {
+            public string baseText;
+            public string comparison;
+            public diffStatus status;
+
+            public Line(string baseText, string comparison, diffStatus status)
+            {
+                this.baseText = baseText;
+                this.comparison = comparison;
+                this.status = status;
+            }
+        }
+
+        private diffStatus diffStatusComparison(diffStatus diffStatusNow, diffStatus diffStatusNext)
+        {
+            if (diffStatusNow == diffStatusNext)
+            {
+                return diffStatusNow;
+            }
+            else if (diffStatusNow == diffStatus.CHANGE)
+            {
+                return diffStatus.CHANGE;
+            }
+            else if (diffStatusNow == diffStatus.EQUAL)
+            {
+                return diffStatusNext;
+            }
+            else if (diffStatusNext == diffStatus.EQUAL)
+            {
+                return diffStatusNow;
+            }
+            else
+            {
+                return diffStatus.CHANGE;
+            }
+        }
+
         public void diff_text(List<Diff> diffs, System.Windows.Forms.RichTextBox richTextBox)
         {
             int index = 0;
+            int lineIndex = 0;
+            List<Line> lines = new List<Line>();
+            lines.Add(new Line { baseText = "", comparison = "", status = diffStatus.EQUAL });
             Color color = Color.Black;
             richTextBox.Select(index, 0);
+
             foreach (Diff aDiff in diffs)
             {
-                string[] text = aDiff.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-                for (int i=0; i<text.Length; i++)
+                string text = aDiff.text;
+                for (int i = 0; 0 != text.Length; i++)
                 {
-                    text[i] += Environment.NewLine;
+                    if (text.IndexOf(Environment.NewLine) == 0)
+                    {
+                        lines.Add(new Line { baseText = "", comparison = "", status = diffStatus.EQUAL });
+                        text = text.Remove(0, Environment.NewLine.Length);
+                        lineIndex++;
+                        continue;
+                    }
+
+
                     switch (aDiff.operation)
                     {
                         case Operation.INSERT:
-                            richTextBox.AppendText("+" + text[i]);
-                            color = Color.Green;
+                            lines[lineIndex] = new Line { baseText = lines[lineIndex].baseText, comparison = lines[lineIndex].comparison + text[0], status = diffStatusComparison(lines[lineIndex].status, diffStatus.INSERT) };
                             break;
                         case Operation.DELETE:
-                            richTextBox.AppendText("-" + text[i]);
-                            color = Color.Red;
+                            lines[lineIndex] = new Line { baseText = lines[lineIndex].baseText + text[0], comparison = lines[lineIndex].comparison, status = diffStatusComparison(lines[lineIndex].status, diffStatus.DELETE) };
                             break;
                         case Operation.EQUAL:
-                            richTextBox.AppendText(" " + text[i]);
-                            color = Color.Black;
+                            lines[lineIndex] = new Line { baseText = lines[lineIndex].baseText + text[0], comparison = lines[lineIndex].comparison + text[0], status = diffStatusComparison(lines[lineIndex].status, diffStatus.EQUAL) };
                             break;
                     }
-                    richTextBox.Select(index, text[i].Length );
-                    index += text[i].Length;
-                    richTextBox.SelectionColor = color;
+
+                    // 1文字捨てる
+                    text = text.Remove(0, 1);
                 }
+            }
+
+            // view
+            for (int i = 0; i < lines.Count; i++)
+            {
+                switch (lines[i].status)
+                {
+                    case diffStatus.EQUAL:
+                        richTextBox.AppendText("   " + lines[i].baseText);
+                        break;
+                    case diffStatus.INSERT:
+                        if (lines[i].baseText != "")
+                        {
+                            richTextBox.AppendText(" A:" + lines[i].baseText);
+                            richTextBox.AppendText(Environment.NewLine);
+                        }
+                        richTextBox.AppendText("+B:" + lines[i].comparison);
+                        break;
+                    case diffStatus.DELETE:
+                        if (lines[i].baseText != "")
+                        {
+                            richTextBox.AppendText(" A:" + lines[i].baseText);
+                            richTextBox.AppendText(Environment.NewLine);
+                        }
+                        richTextBox.AppendText("-B:" + lines[i].comparison);
+                        break;
+                    case diffStatus.CHANGE:
+                        richTextBox.AppendText(" A:" + lines[i].baseText);
+                        richTextBox.AppendText(Environment.NewLine);
+                        richTextBox.AppendText(" B:" + lines[i].comparison);
+                        break;
+                }
+                richTextBox.AppendText(Environment.NewLine);
             }
         }
 

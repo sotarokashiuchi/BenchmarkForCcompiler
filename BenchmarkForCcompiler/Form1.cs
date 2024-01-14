@@ -49,15 +49,35 @@ namespace BenchmarkForCcompiler
             // 比較表示
             比較表示ToolStripMenuItem.PerformClick();
 
-            diff_match_patch diff_Match_Patch = new diff_match_patch();
-            diff_Match_Patch.diff_text(diff_Match_Patch.diff_main(richTextBox2.Text, richTextBox5.Text), richTextBox1);
+            //diff_match_patch diff_Match_Patch = new diff_match_patch();
+            //diff_Match_Patch.diff_text(diff_Match_Patch.diff_main(richTextBox2.Text, richTextBox5.Text), richTextBox1);
 
-            Console.Write(diff_Match_Patch.diff_lineMode("Hello World", "Helllo World Japan.", DateTime.Now)[0]);
+            //Console.Write(diff_Match_Patch.diff_lineMode("Hello World", "Helllo World Japan.", DateTime.Now)[0]);
             
             Comparison comparison = new Comparison();
-            Console.WriteLine(comparison.GNUDiff("Hello World", "Helllo World Japan."));
+            comparison.GitDiff(
+                "Hello world" +
+                Environment.NewLine +
+                "Japan" +
+                Environment.NewLine +
+                " My Name is KS." +
+                Environment.NewLine +
+                "TT.",
 
+                "Hello orld" + 
+                Environment.NewLine + 
+                "Japan" +
+                Environment.NewLine +
+                " my Name is KS." +
+                Environment.NewLine +
+                "This is ." +
+                Environment.NewLine +
+                "TT.",
+
+                richTextBox1
+            );
             
+            // Console.WriteLine(comparison.GNUDiff("Hello World", "Helllo World Japan."));
 
             tableLayoutPanel2.Width = 000;
             tableLayoutPanel2.Height = 000;
@@ -515,7 +535,7 @@ namespace BenchmarkForCcompiler
 
         protected string matchFileName(ProfileStatus profileStatus, string match)
         {
-            if (match[0] != '*')
+            if (match != "" && match[0] != '*')
             {
                 return match;
             }
@@ -547,8 +567,8 @@ namespace BenchmarkForCcompiler
         {
             Run(ProfileStatus.ProfileA);
             Run(ProfileStatus.ProfileB);
-            comparison.GitDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text, ComparisonRichOutputTextBox);
-
+            comparison.GitDiff(ProfileA_OutputRichTextBox.Text.Replace("\n", Environment.NewLine), ProfileB_OutputRichTextBox.Text.Replace("\n", Environment.NewLine), ComparisonRichOutputTextBox);
+            //ComparisonRichOutputTextBox.Text = comparison.GNUDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text);
         }
     }
 
@@ -619,7 +639,7 @@ namespace BenchmarkForCcompiler
             // ComparisonRichOutputTextBox.Text = diff.Replace("\n", Environment.NewLine);
             Run(ProfileStatus.ProfileA, profileInfoA);
             Run(ProfileStatus.ProfileB, profileInfoB);
-            comparison.GitDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text, ComparisonRichOutputTextBox);
+            comparison.GitDiff(ProfileA_OutputRichTextBox.Text.Replace("\n", Environment.NewLine), ProfileB_OutputRichTextBox.Text.Replace("\n", Environment.NewLine), ComparisonRichOutputTextBox);
         }
     }
 
@@ -745,11 +765,12 @@ namespace BenchmarkForCcompiler
     class Comparison
     {
         diff_match_patch dmp = new diff_match_patch();
-
+        /*
         public string GNUDiff(string textA, string textB)
         {
             return dmp.patch_toText(dmp.patch_make(textA, textB));
         }
+        */
 
         public void GitDiff(string  textA, string textB, System.Windows.Forms.RichTextBox richTextBox)
         {
