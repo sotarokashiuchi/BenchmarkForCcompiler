@@ -513,6 +513,34 @@ namespace BenchmarkForCcompiler
             }
         }
 
+        protected string matchFileName(ProfileStatus profileStatus, string match)
+        {
+            if (match[0] != '*')
+            {
+                return match;
+            }
+            
+            string[] filename;
+            filename = Directory.GetFiles(@"temp" + profileStatus);
+            for (int i = 0; i < filename.Length; i++)
+            {
+                filename[i] = Path.GetFileName(filename[i]);
+                Console.WriteLine(filename[i]);
+                for (int j = 1; j <= filename[i].Length && j < match.Length; j++)
+                {
+                    if (filename[i][filename[i].Length - j] != match[match.Length - j])
+                    {
+                        break;
+                    }
+                    if (match.Length-1 == j)
+                    {
+                        return filename[i];
+                    }
+                }
+            }
+
+            return "";
+        }
         abstract public void Run(ProfileStatus profileStatus);
 
         public void Comparison()
@@ -603,7 +631,8 @@ namespace BenchmarkForCcompiler
             StreamReader sr = null;
             try
             {
-                sr = new StreamReader(@"temp" + profileStatus + @"\" + inputFileNameTextBox.Text, Encoding.GetEncoding("UTF-8"));
+                // 先頭だけ正規表現使える
+                sr = new StreamReader(@"temp" + profileStatus + @"\" + matchFileName(profileStatus, inputFileNameTextBox.Text), Encoding.GetEncoding("UTF-8"));
                 outputRichTextBox.Text = sr.ReadToEnd();
                 sr.Close();
             }
@@ -665,7 +694,7 @@ namespace BenchmarkForCcompiler
             switchProfile(profileStatus);
             // プログラムの実行
             ProcessStartInfo psInfo = new ProcessStartInfo();
-            psInfo.FileName = inputFileNameTextBox.Text == "" ? "" : @"temp" + profileStatus + @"\" + inputFileNameTextBox.Text;
+            psInfo.FileName = inputFileNameTextBox.Text == "" ? "" : @"temp" + profileStatus + @"\" + matchFileName(profileStatus, inputFileNameTextBox.Text);
             psInfo.CreateNoWindow = true; // コンソール・ウィンドウを開かない
             psInfo.UseShellExecute = false; // シェル機能を使用しない
             psInfo.RedirectStandardOutput = true; // 標準出力をリダイレクト
