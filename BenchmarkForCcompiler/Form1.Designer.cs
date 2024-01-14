@@ -521,13 +521,14 @@ namespace BenchmarkForCcompiler
             this.flowLayoutPanel1.Controls.Add(this.panel2);
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1086, 159);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1087, 159);
             this.flowLayoutPanel1.TabIndex = 28;
             // 
             // richTextBox1
             // 
             this.richTextBox1.Location = new System.Drawing.Point(15, 50);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(509, 76);
             this.richTextBox1.TabIndex = 47;
             this.richTextBox1.Text = "";
@@ -626,7 +627,7 @@ namespace BenchmarkForCcompiler
             this.表示ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1116, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1117, 24);
             this.menuStrip1.TabIndex = 43;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -724,6 +725,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox3.Location = new System.Drawing.Point(15, 465);
             this.richTextBox3.Name = "richTextBox3";
+            this.richTextBox3.ReadOnly = true;
             this.richTextBox3.Size = new System.Drawing.Size(509, 129);
             this.richTextBox3.TabIndex = 47;
             this.richTextBox3.Text = "";
@@ -732,6 +734,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox2.Location = new System.Drawing.Point(15, 170);
             this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.ReadOnly = true;
             this.richTextBox2.Size = new System.Drawing.Size(509, 255);
             this.richTextBox2.TabIndex = 47;
             this.richTextBox2.Text = "";
@@ -753,7 +756,7 @@ namespace BenchmarkForCcompiler
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 585F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1092, 814);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1093, 814);
             this.tableLayoutPanel2.TabIndex = 46;
             // 
             // flowLayoutPanel2
@@ -766,7 +769,7 @@ namespace BenchmarkForCcompiler
             this.flowLayoutPanel2.Controls.Add(this.panel5);
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 202);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(1086, 609);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(1087, 609);
             this.flowLayoutPanel2.TabIndex = 30;
             this.flowLayoutPanel2.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanel2_Paint);
             // 
@@ -790,6 +793,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox6.Location = new System.Drawing.Point(11, 462);
             this.richTextBox6.Name = "richTextBox6";
+            this.richTextBox6.ReadOnly = true;
             this.richTextBox6.Size = new System.Drawing.Size(509, 129);
             this.richTextBox6.TabIndex = 47;
             this.richTextBox6.Text = "";
@@ -798,6 +802,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox5.Location = new System.Drawing.Point(11, 167);
             this.richTextBox5.Name = "richTextBox5";
+            this.richTextBox5.ReadOnly = true;
             this.richTextBox5.Size = new System.Drawing.Size(509, 258);
             this.richTextBox5.TabIndex = 47;
             this.richTextBox5.Text = "";
@@ -806,6 +811,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox4.Location = new System.Drawing.Point(11, 47);
             this.richTextBox4.Name = "richTextBox4";
+            this.richTextBox4.ReadOnly = true;
             this.richTextBox4.Size = new System.Drawing.Size(509, 76);
             this.richTextBox4.TabIndex = 47;
             this.richTextBox4.Text = "";
@@ -860,6 +866,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox9.Location = new System.Drawing.Point(16, 462);
             this.richTextBox9.Name = "richTextBox9";
+            this.richTextBox9.ReadOnly = true;
             this.richTextBox9.Size = new System.Drawing.Size(509, 129);
             this.richTextBox9.TabIndex = 47;
             this.richTextBox9.Text = "";
@@ -868,6 +875,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox7.Location = new System.Drawing.Point(16, 47);
             this.richTextBox7.Name = "richTextBox7";
+            this.richTextBox7.ReadOnly = true;
             this.richTextBox7.Size = new System.Drawing.Size(509, 76);
             this.richTextBox7.TabIndex = 47;
             this.richTextBox7.Text = "";
@@ -876,6 +884,7 @@ namespace BenchmarkForCcompiler
             // 
             this.richTextBox8.Location = new System.Drawing.Point(16, 167);
             this.richTextBox8.Name = "richTextBox8";
+            this.richTextBox8.ReadOnly = true;
             this.richTextBox8.Size = new System.Drawing.Size(509, 258);
             this.richTextBox8.TabIndex = 47;
             this.richTextBox8.Text = "";
@@ -912,12 +921,13 @@ namespace BenchmarkForCcompiler
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1116, 853);
+            this.ClientSize = new System.Drawing.Size(1117, 853);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.ShowIcon = false;
+            this.Text = "Benchmark For Compiler";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_Close);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);

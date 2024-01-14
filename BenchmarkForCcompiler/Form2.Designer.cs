@@ -114,6 +114,7 @@
             this.Controls.Add(this.richTextBox1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form2";
+            this.ShowIcon = false;
             this.Text = "Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form2_FormClosing);
             this.menuStrip1.ResumeLayout(false);
