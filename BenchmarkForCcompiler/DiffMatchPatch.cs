@@ -1597,6 +1597,15 @@ namespace DiffMatchPatch
             }
         }
 
+        /*
+         * 現在の行のdiffStatusの状態と、次のdiffStatusの状態から、
+         * 行のdiffStatusの状態を決め、返す
+         *                 Now
+         *          | = | + | - | * |
+         * Next | = | = | + | - | * |
+         *      | + | + | + | * | * |
+         *      | - | - | * | - | * |
+         */
         private diffStatus diffStatusComparison(diffStatus diffStatusNow, diffStatus diffStatusNext)
         {
             if (diffStatusNow == diffStatusNext)
@@ -1621,6 +1630,12 @@ namespace DiffMatchPatch
             }
         }
 
+        /*
+         * 行単位のdiffを表示
+         * diff A B
+         * 緑:AにないBの文字列
+         * 赤:BにないAの文字列
+         */
         public void diff_text(List<Diff> diffs, System.Windows.Forms.RichTextBox richTextBox)
         {
             int index = 0;
@@ -1662,7 +1677,7 @@ namespace DiffMatchPatch
                 }
             }
 
-            // view
+            // 表示
             richTextBox.SelectionLength = 0;
             for (int i = 0; i < lines.Count; i++)
             {
