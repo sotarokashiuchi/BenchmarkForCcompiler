@@ -25,6 +25,7 @@ using System.Web;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Security.Cryptography.X509Certificates;
+using System.Reflection;
 
 namespace DiffMatchPatch
 {
@@ -1662,37 +1663,70 @@ namespace DiffMatchPatch
             }
 
             // view
+            richTextBox.SelectionLength = 0;
             for (int i = 0; i < lines.Count; i++)
             {
                 switch (lines[i].status)
                 {
                     case diffStatus.EQUAL:
-                        richTextBox.AppendText("   " + lines[i].baseText);
+                        richTextBox.AppendText(" " + lines[i].baseText);
                         break;
                     case diffStatus.INSERT:
                         if (lines[i].baseText != "")
                         {
-                            richTextBox.AppendText(" A:" + lines[i].baseText);
+                            richTextBox.AppendText(" " + lines[i].baseText);
                             richTextBox.AppendText(Environment.NewLine);
                         }
-                        richTextBox.AppendText("+B:" + lines[i].comparison);
+                        richTextBox.SelectionBackColor = Color.FromArgb(255, 229, 255, 204);
+                        richTextBox.SelectedText = "+";
+                        diff_string(diff_main(lines[i].baseText, lines[i].comparison), richTextBox);
                         break;
                     case diffStatus.DELETE:
                         if (lines[i].baseText != "")
                         {
-                            richTextBox.AppendText(" A:" + lines[i].baseText);
+                            richTextBox.AppendText(" " + lines[i].baseText);
                             richTextBox.AppendText(Environment.NewLine);
                         }
-                        richTextBox.AppendText("-B:" + lines[i].comparison);
+                        richTextBox.SelectionBackColor = Color.FromArgb(255, 255, 204, 204);
+                        richTextBox.SelectedText = "-";
+                        diff_string(diff_main(lines[i].baseText, lines[i].comparison), richTextBox);
                         break;
                     case diffStatus.CHANGE:
-                        richTextBox.AppendText(" A:" + lines[i].baseText);
+                        richTextBox.AppendText(" " + lines[i].baseText);
                         richTextBox.AppendText(Environment.NewLine);
-                        richTextBox.AppendText(" B:" + lines[i].comparison);
+                        richTextBox.SelectionBackColor = Color.FromArgb(255, 220, 240, 255);
+                        richTextBox.SelectedText = "*";
+                        diff_string(diff_main(lines[i].baseText, lines[i].comparison), richTextBox);
                         break;
                 }
                 richTextBox.AppendText(Environment.NewLine);
             }
+        }
+
+
+        private void diff_string(List<Diff> diffs, System.Windows.Forms.RichTextBox richTextBox)
+        {
+            Color color = Color.Black;
+            richTextBox.SelectionLength = 0;
+            foreach (Diff aDiff in diffs)
+            {
+                switch (aDiff.operation)
+                {
+                    case Operation.INSERT:
+                        color = Color.Green;
+                        color = Color.FromArgb(255, 0, 185, 0);
+                        break;
+                    case Operation.DELETE:
+                        color = Color.Red;
+                        break;
+                    case Operation.EQUAL:
+                        color = Color.Black;
+                        break;
+                }
+                richTextBox.SelectionColor = color;
+                richTextBox.SelectedText = aDiff.text;
+            }
+
         }
 
         public void diff_textNewLine(List<Diff> diffs, System.Windows.Forms.RichTextBox richTextBox)
@@ -1727,44 +1761,6 @@ namespace DiffMatchPatch
                     richTextBox.SelectionColor = color;
                 }
             }
-        }
-
-        public void diff_line(List<Diff> diffs, System.Windows.Forms.RichTextBox richTextBox)
-        {
-            int index = 0;
-            int lineCount = 0;
-            Color color = Color.Black;
-            richTextBox.Select(index, 0);
-            foreach (Diff aDiff in diffs)
-            {
-                string[] text = aDiff.text.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
-                for (int i = 0; i < text.Length; i++)
-                {
-                    if (i != 0)
-                    {
-                        text[i] += Environment.NewLine;
-                    }
-                    switch (aDiff.operation)
-                    {
-                        case Operation.INSERT:
-                            richTextBox.AppendText("+" + text[i]);
-                            color = Color.Green;
-                            break;
-                        case Operation.DELETE:
-                            richTextBox.AppendText("-" + text[i]);
-                            color = Color.Red;
-                            break;
-                        case Operation.EQUAL:
-                            richTextBox.AppendText(" " + text[i]);
-                            color = Color.Black;
-                            break;
-                    }
-                    richTextBox.Select(index, text[i].Length);
-                    index += text[i].Length;
-                    richTextBox.SelectionColor = color;
-                }
-            }
-
         }
 
         /**

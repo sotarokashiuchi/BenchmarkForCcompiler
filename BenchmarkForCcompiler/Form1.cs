@@ -76,7 +76,13 @@ namespace BenchmarkForCcompiler
 
                 richTextBox1
             );
-            
+
+
+            for(int i=0; i<5; i++)
+            {
+                red(richTextBox2);
+            }
+
             // Console.WriteLine(comparison.GNUDiff("Hello World", "Helllo World Japan."));
 
             tableLayoutPanel2.Width = 000;
@@ -84,6 +90,16 @@ namespace BenchmarkForCcompiler
             flowLayoutPanel2.Width = flowLayoutPanel2.Height = 0;
             tableLayoutPanel2.Refresh();
         }
+
+        public void red(RichTextBox richTextBox)
+        {
+            richTextBox.Select(0, 0);
+            richTextBox.SelectionColor = Color.Red;
+            richTextBox.SelectionBackColor = Color.FromArgb(255, 255, 204, 204);
+            richTextBox2.SelectedText = "aa";
+//            richTextBox.AppendText("aa");
+        }
+
 
         private void Form1_Close(object sender, EventArgs e)
         {
