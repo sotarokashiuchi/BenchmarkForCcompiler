@@ -1684,8 +1684,8 @@ namespace DiffMatchPatch
                 switch (lines[i].status)
                 {
                     case diffStatus.EQUAL:
-                        richTextBox.AppendText(" " + lines[i].baseText);
-                        break;
+                        richTextBox.AppendText(" " + lines[i].baseText + Environment.NewLine);
+                        continue;
                     case diffStatus.INSERT:
                         if (lines[i].baseText != "")
                         {
@@ -1694,7 +1694,6 @@ namespace DiffMatchPatch
                         }
                         richTextBox.SelectionBackColor = Color.FromArgb(255, 229, 255, 204);
                         richTextBox.SelectedText = "+";
-                        diff_string(diff_main(lines[i].baseText, lines[i].comparison), richTextBox);
                         break;
                     case diffStatus.DELETE:
                         if (lines[i].baseText != "")
@@ -1704,16 +1703,17 @@ namespace DiffMatchPatch
                         }
                         richTextBox.SelectionBackColor = Color.FromArgb(255, 255, 204, 204);
                         richTextBox.SelectedText = "-";
-                        diff_string(diff_main(lines[i].baseText, lines[i].comparison), richTextBox);
                         break;
                     case diffStatus.CHANGE:
                         richTextBox.AppendText(" " + lines[i].baseText);
                         richTextBox.AppendText(Environment.NewLine);
                         richTextBox.SelectionBackColor = Color.FromArgb(255, 220, 240, 255);
                         richTextBox.SelectedText = "*";
-                        diff_string(diff_main(lines[i].baseText, lines[i].comparison), richTextBox);
                         break;
                 }
+                var diff = diff_main(lines[i].baseText, lines[i].comparison);
+                diff_cleanupSemantic(diff);
+                diff_string(diff, richTextBox);
                 richTextBox.AppendText(Environment.NewLine);
             }
         }

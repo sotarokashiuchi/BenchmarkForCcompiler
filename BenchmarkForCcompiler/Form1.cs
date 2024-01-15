@@ -49,57 +49,11 @@ namespace BenchmarkForCcompiler
             // 比較表示
             比較表示ToolStripMenuItem.PerformClick();
 
-            //diff_match_patch diff_Match_Patch = new diff_match_patch();
-            //diff_Match_Patch.diff_text(diff_Match_Patch.diff_main(richTextBox2.Text, richTextBox5.Text), richTextBox1);
-
-            //Console.Write(diff_Match_Patch.diff_lineMode("Hello World", "Helllo World Japan.", DateTime.Now)[0]);
-            
-            Comparison comparison = new Comparison();
-            comparison.GitDiff(
-                "Hello world" +
-                Environment.NewLine +
-                "Japan" +
-                Environment.NewLine +
-                " My Name is KS." +
-                Environment.NewLine +
-                "TT.",
-
-                "Hello orld" + 
-                Environment.NewLine + 
-                "Japan" +
-                Environment.NewLine +
-                " my Name is KS." +
-                Environment.NewLine +
-                "This is ." +
-                Environment.NewLine +
-                "TT.",
-
-                richTextBox1
-            );
-
-
-            for(int i=0; i<5; i++)
-            {
-                red(richTextBox2);
-            }
-
-            // Console.WriteLine(comparison.GNUDiff("Hello World", "Helllo World Japan."));
-
             tableLayoutPanel2.Width = 000;
             tableLayoutPanel2.Height = 000;
             flowLayoutPanel2.Width = flowLayoutPanel2.Height = 0;
             tableLayoutPanel2.Refresh();
         }
-
-        public void red(RichTextBox richTextBox)
-        {
-            richTextBox.Select(0, 0);
-            richTextBox.SelectionColor = Color.Red;
-            richTextBox.SelectionBackColor = Color.FromArgb(255, 255, 204, 204);
-            richTextBox2.SelectedText = "aa";
-//            richTextBox.AppendText("aa");
-        }
-
 
         private void Form1_Close(object sender, EventArgs e)
         {
@@ -651,8 +605,6 @@ namespace BenchmarkForCcompiler
         
         public void Comparison(Profile.ProfileInfo profileInfoA, Profile.ProfileInfo profileInfoB)
         {
-            // string diff =  comparison.GNUDiff(ProfileA_OutputRichTextBox.Text, ProfileB_OutputRichTextBox.Text);
-            // ComparisonRichOutputTextBox.Text = diff.Replace("\n", Environment.NewLine);
             Run(ProfileStatus.ProfileA, profileInfoA);
             Run(ProfileStatus.ProfileB, profileInfoB);
             comparison.GitDiff(ProfileA_OutputRichTextBox.Text.Replace("\n", Environment.NewLine), ProfileB_OutputRichTextBox.Text.Replace("\n", Environment.NewLine), ComparisonRichOutputTextBox);
@@ -790,7 +742,10 @@ namespace BenchmarkForCcompiler
 
         public void GitDiff(string  textA, string textB, System.Windows.Forms.RichTextBox richTextBox)
         {
-            dmp.diff_text(dmp.diff_main(textA, textB), richTextBox);
+            richTextBox.Text = "";
+            var diff = dmp.diff_main(textA, textB);
+            dmp.diff_cleanupSemantic(diff); 
+            dmp.diff_text(diff, richTextBox);
         }
     }
 }
