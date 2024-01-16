@@ -106,7 +106,7 @@ Diff表示モードを使用する場合、プロファイルAとプロファイ
 3. 「比較表示」又は「Diff表示」をクリック  
 ![menubar-view](./assets//menubar-view.png)
 
-# プログラムの概要
+# プログラムの説明
 ## ディレクトリ構成
 - Form1.cs
   - このファイルにはプログラムを実行したときに、一番初めに表示されるフォームのコードを記述した
@@ -200,4 +200,125 @@ namespace BenchmarkForCcompiler
 }
 ```
 
-# 工夫点
+## クラス図とコード
+使用したクラスの中で特にプログラムを説明するにあたり、重要なクラスを紹介する。図はUMLのクラス図の記法を参考に書いた。
+
+### Profileクラス
+![class Profile](./assets//object-Profile.drawio.svg)
+- プロファイルの管理を行うクラス
+- プロファイルAとプロファイルBで必要な処理をまとめている
+- プロファイルの読み込み、表示、作成、取得を行う
+
+```cs
+class Profile
+{
+    /* プロファイルの全ての情報を格納する構造体の定義 */
+    public struct ProfileInfo
+    {
+        public string ProfileName;
+        public string Compiler;
+        public string Option;
+        public string ExecutableFileName;
+        public string AsmFileName;
+        /* 省略 */
+    }
+
+    private ProfileInfo profileInfo = new ProfileInfo();
+    private System.Windows.Forms.ComboBox comboBox;
+    private System.Windows.Forms.TextBox compilerTextBox;
+    private System.Windows.Forms.TextBox optionTextBox;
+    private System.Windows.Forms.TextBox executableFileNameTextBox;
+    private System.Windows.Forms.TextBox asmFileNameTextBox;
+
+    /* 初期化 */
+    public void Initialize(System.Windows.Forms.ComboBox comboBox, ,,,,){  }
+
+    /* comboBoxのリストに追加 */
+    public void ShowProfileList(){ }
+
+    /* プロファイルを表示 */
+    public void ShowProfileInfo(){ }
+
+    /* プロファイル作成 */
+    public void CreateProfile(){ }
+
+    /* 現在のプロファイル */
+    public ProfileInfo GetNowProfile(){ }
+
+    /* プロファイルの保存 */
+    public void SaveProfile(){ }
+}
+```
+
+### BulidBaseClassクラス
+![class Bulid Base Class](./assets/object-BulidBaseClass.drawio.svg)
+- このアプリのメインの処理を行うクラス
+- 「コンパイル実行」、「アセンブラ表示」、「プログラム実行」の処理は、必要なオブジェクトの数と、処理が似ているため、BuildBaseClassクラスというい抽象クラスを定義し、抽象クラスの派生クラスとして、それぞれ「Compile」、「Asm」、「Executable」というクラスを定義
+- メンバ変数や、Initializeメソッドなどは継承を用い、共通化させた
+- Runメソッドは、各クラスで異なる動作をするので、オーバーライド機能とオーバーロード機能を用い、同一の関数名だが、各クラスで実装が異なるようにした。
+
+```cs
+public enum ProfileStatus
+{
+    ProfileA,
+    ProfileB,
+}
+
+/* 抽象クラス */
+abstract class BuildBaseClass
+{
+    protected System.Windows.Forms.RichTextBox outputRichTextBox;
+    protected System.Windows.Forms.TextBox inputFileNameTextBox;
+    protected System.Windows.Forms.RichTextBox ProfileA_OutputRichTextBox;
+    protected System.Windows.Forms.TextBox ProfileA_InputFileNameTextBox;
+    protected System.Windows.Forms.RichTextBox ProfileB_OutputRichTextBox;
+    protected System.Windows.Forms.TextBox ProfileB_InputFileNameTextBox;
+    protected System.Windows.Forms.RichTextBox ComparisonRichOutputTextBox;
+
+    /* 初期化 */
+    public void Initialize(System.Windows.Forms.RichTextBox ProfileA_OutputRichTextBox, ,,,){ }
+
+    /* 抽象メソッド */
+    abstract public void Run(ProfileStatus profileStatus);
+
+    public void Comparison()
+    {
+        // 抽象メソッドを呼び出し可能
+        Run(ProfileStatus.ProfileA);
+        Run(ProfileStatus.ProfileB);
+        comparison.GitDiff(ProfileA_OutputRichTextBox.Text.Replace("\n", Environment.NewLine), ProfileB_OutputRichTextBox.Text.Replace("\n", Environment.NewLine), ComparisonRichOutputTextBox);
+    }
+}
+
+/* 抽象クラスを継承したクラス */
+class Compile : BuildBaseClass
+{
+    /* オーバーロード機能を使用し、Run()を再定義 */
+    public void Run(ProfileStatus profileStatus, Profile.ProfileInfo profileInfo){ }
+    
+    public void Comparison(Profile.ProfileInfo profileInfoA, Profile.ProfileInfo profileInfoB) { }
+}
+
+/* 抽象クラスを継承したクラス */
+class Asm : BuildBaseClass
+{
+    /* オーバーライド機能を使用し、Run()を実装 */
+    public override void Run(ProfileStatus profileStatus){ }
+}
+
+/* 抽象クラスを継承したクラス */
+class Executable : BuildBaseClass
+{
+    /* オーバーライド機能を使用し、Run()を実装 */
+    public override void Run(ProfileStatus profileStatus){ }
+}
+```
+
+## クラスとインスタンス
+ここで生成されるインスタンスと、クラスのメンバ変数を対応付けた図を示す。ここからも、クラスの有用性が伺える。
+
+### Profileクラス
+![](./assets/instance-Profile.drawio.svg)
+
+### BulidBaseClassクラス
+![](./assets/instance-BulidBaseClass.drawio.svg)
