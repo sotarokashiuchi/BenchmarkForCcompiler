@@ -322,3 +322,78 @@ class Executable : BuildBaseClass
 
 ### BulidBaseClassクラス
 ![](./assets/instance-BulidBaseClass.drawio.svg)
+
+# 工夫点
+いくつかプログラムの工夫点を紹介する。
+
+## 例外処理
+ユーザーの操作ミスにより、例外(実行時エラー)が発生したり、動作しないプログラムになったりする場合がある。そのたびに毎回プログラムが停止し、作業していた内容が全て消えると、二度手間だ。そこでプログラムを停止することなく、ユーザにエラーを報告し、修正してもらうようにプログラムした。いくつか例を示す。
+
+- 例1: コンパイルのパスが入力されていません  
+  ![](./assets/error-compile-path.png)
+  - 「プロファイル」を指定せずに、「コンパイル実行」をクリックすると発生
+- 例2: プログラムのパスが入力されていません  
+  ![](./assets/warning-new-file.png)
+  - 「プログラムのパス」を入力せずに、「編集」ボタンをクリックし、テキストエディタを開こうとした場合に発生
+- 例3: ファイルが未保存です  
+  ![](./assets/warning-save-file.png)
+  - テキストエディタで、ファイルを保存せずに、フォームを閉じようとした場合に発生
+- 例4: 既に同じ名前のプロファイルが存在しています  
+  ![](./assets/warning-overwrite.png)
+  - 同じ名前のプロファイルを「作成」しようとした場合に発生
+
+例外処理の実装方法は、`try catch finally`構文を使用した。以下のように、例外が発生しそうなコードを`try`で囲む。例外が発生した場合、例外の種類に応じて、`catch`の処理が行われる。`finally`は全ての場合に実行されるコードであり、リソースの開放などを行う。
+
+```cs
+public override void Run(ProfileStatus profileStatus)
+{
+    switchProfile(profileStatus);
+    StreamReader sr = null;
+    try
+    {
+        sr = new StreamReader(@"temp" + profileStatus + @"\" + matchFileName(profileStatus, inputFileNameTextBox.Text), Encoding.GetEncoding("UTF-8"));
+        outputRichTextBox.Text = sr.ReadToEnd();
+        sr.Close();
+    }
+    catch (ArgumentException ex)
+    {
+        // ファイル名を指定していない
+        MessageBox.Show(
+            "「アセンブラファイル名」が入力されていません。",
+            "エラー",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error
+        );
+        Console.WriteLine(ex.Message);
+    }
+    catch(IOException ex) {
+        // ファイル名が不正
+        MessageBox.Show(
+            "「アセンブラファイル名」に使用できない文字が含まれています",
+            "エラー",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error
+        );
+        Console.WriteLine(ex.Message);
+    }
+    finally
+    {
+        sr?.Close();
+    }
+}
+```
+
+## 少し便利な機能
+なくてもよいが、あったら便利な機能をいくつか実装したので、紹介する。
+- 例1: テキストエディタのアスタリスクの表示
+  - テキストエディターを開くとウィンドウの上部にファイル名が表示される
+  - テキストを編集し未保存の場合、ファイル名の右側に「*(アスタリスク)」が表示される
+  ![アスタリスク](./assets/editor-asterisk.png)
+- 例2: ショートカットキーの実装
+  - メニューバーの「実行」や「表示」、「ファイル」をクリックする
+  - メニューの右側に表示されるのがショートカットキー
+  ![ショートカットキー](./assets//shutcutkey.png)
+
+## diff処理
+実装にすごく苦労した、「Diff表示モード」の差分を表示する機能。[google/diff-match-patch](https://github.com/google/diff-match-patch)では行単位の差分を取得することができなかった。そこで独自のメソッドを作成し、行単位での差分を表示できるようにした。配列や可変長のサイズにできるリストを用いて記述した。またTextBoxではなくRichTextBoxを使い、差分がある部分にわかりやすいように色を付けた
+![diff](./assets/diff-color.png)
