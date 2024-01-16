@@ -39,7 +39,7 @@ namespace BenchmarkForCcompiler
                 // ファイル名を指定していない
                 if (MessageBox.Show(
                     "「プログラムのパス」が入力されていません。" + Environment.NewLine + "ファイルを新規作成します。",
-                    "エラー",
+                    "警告",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
                 ) == DialogResult.No)
@@ -54,7 +54,7 @@ namespace BenchmarkForCcompiler
                 // ファイル名が正しくない
                 if (MessageBox.Show(
                     "「プログラムのパス」が正しくありません。" + Environment.NewLine + "ファイルを新規作成します。",
-                    "エラー",
+                    "警告",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
                 ) == DialogResult.No)
@@ -69,7 +69,7 @@ namespace BenchmarkForCcompiler
                 // ファイル名が正しくない
                 if (MessageBox.Show(
                     "「プログラムのパス」が正しくありません。" + Environment.NewLine + "ファイルを新規作成します。",
-                    "エラー",
+                    "警告",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
                 ) == DialogResult.No)
@@ -84,7 +84,7 @@ namespace BenchmarkForCcompiler
                 // ファイル名が不正
                 if (MessageBox.Show(
                     "「プログラムのパス」に使用できない文字が含まれています" + Environment.NewLine + "ファイルを新規作成します。",
-                    "エラー",
+                    "警告",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Warning
                 ) == DialogResult.No)

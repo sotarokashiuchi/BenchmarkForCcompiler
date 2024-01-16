@@ -32,8 +32,8 @@ namespace BenchmarkForCcompiler
         {
             InitializeComponent();
 
-            profileA.Initialize(comboBox1, button3, button6, textBox2, textBox3, textBox6, textBox15);
-            profileB.Initialize(comboBox2, button9, button10, textBox7, textBox9, textBox8, textBox14);
+            profileA.Initialize(comboBox1, textBox2, textBox3, textBox6, textBox15);
+            profileB.Initialize(comboBox2, textBox7, textBox9, textBox8, textBox14);
             compile.Initialize(richTextBox1, textBox4, richTextBox4, textBox4, richTextBox7);
             asm.Initialize(richTextBox2, textBox15, richTextBox5, textBox14, richTextBox8);
             executable.Initialize(richTextBox3, textBox6, richTextBox6, textBox8, richTextBox9);
@@ -288,8 +288,6 @@ namespace BenchmarkForCcompiler
         private void button7_Click(object sender, EventArgs e)
         {
             form2.FilePath = textBox4.Text;
-            // Console.WriteLine(form2.FilePath);
-            // form2.Show();
             form2.Road();
         }
     }
@@ -315,8 +313,6 @@ namespace BenchmarkForCcompiler
         }
         private ProfileInfo profileInfo = new ProfileInfo();
         private System.Windows.Forms.ComboBox comboBox;
-        private System.Windows.Forms.Button createButton;
-        private System.Windows.Forms.Button saveButton;
         private System.Windows.Forms.TextBox compilerTextBox;
         private System.Windows.Forms.TextBox optionTextBox;
         private System.Windows.Forms.TextBox executableFileNameTextBox;
@@ -325,8 +321,6 @@ namespace BenchmarkForCcompiler
 
         public void Initialize(
             System.Windows.Forms.ComboBox comboBox,
-            System.Windows.Forms.Button createButton,
-            System.Windows.Forms.Button saveButton,
             System.Windows.Forms.TextBox compilerTextBox,
             System.Windows.Forms.TextBox optionTextBox,
             System.Windows.Forms.TextBox executableFileNameTextBox,
@@ -334,8 +328,6 @@ namespace BenchmarkForCcompiler
             )
         {
             this.comboBox = comboBox;
-            this.createButton = createButton;
-            this.saveButton = saveButton;
             this.compilerTextBox = compilerTextBox;
             this.optionTextBox = optionTextBox;
             this.executableFileNameTextBox = executableFileNameTextBox;
@@ -350,7 +342,7 @@ namespace BenchmarkForCcompiler
 
         }
 
-        public string[] GetList()
+        private string[] GetList()
         {
             // Profileディレクトリのファイルを一覧取得
             string[] filename;
@@ -362,7 +354,7 @@ namespace BenchmarkForCcompiler
             return filename;
         }
 
-        public ProfileInfo RoadProfileInfo(string filename)
+        private ProfileInfo RoadProfileInfo(string filename)
         {
             StreamReader sr = new StreamReader(profilePath + filename, Encoding.GetEncoding("UTF-8"));
             string[] lists = sr.ReadToEnd().Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
@@ -416,7 +408,7 @@ namespace BenchmarkForCcompiler
                     // エラー処理
                     DialogResult dialogResult = MessageBox.Show(
                         "既に同じ名前のプロファイルが存在しています。\n上書を行い続行しますか?\n",
-                        "Warning",
+                        "警告",
                         MessageBoxButtons.YesNo,
                         MessageBoxIcon.Warning
                     );
