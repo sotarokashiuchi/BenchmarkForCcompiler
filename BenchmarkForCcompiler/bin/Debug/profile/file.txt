@@ -1,4 +1,0 @@
-﻿compiler,gcc
-option,-save-temps -O3 -o aa
-executableFileName,aa.exe
-asmFileName,aa-print.s
