@@ -148,7 +148,7 @@ Diff表示モードを使用する場合、プロファイルAとプロファイ
 4. 「textBox」や、「button」、「comboBox」、「checkBox」のイベント発生をトリガに、メソッドを呼び出す。Form1のクラス側では、動作の実装を定義せず、別のクラスに実装を分けた
 5. Form1が閉じられると同時に呼び出される`Form1_Close`メソッドで、終了処理を行う
 
-```cs
+```csharp
 namespace BenchmarkForCcompiler
 {
     public partial class Form1 : System.Windows.Forms.Form
@@ -231,7 +231,7 @@ namespace BenchmarkForCcompiler
 - プロファイルAとプロファイルBで必要な処理をまとめている
 - プロファイルの読み込み、表示、作成、取得を行う
 
-```cs
+```csharp
 class Profile
 {
     /* プロファイルの全ての情報を格納する構造体の定義 */
@@ -279,7 +279,7 @@ class Profile
 - メンバ変数や、Initializeメソッドなどは継承を用い、共通化させた
 - Runメソッドは、各クラスで異なる動作をするので、オーバーライド機能とオーバーロード機能を用い、同一の関数名だが、各クラスで実装が異なるようにした。
 
-```cs
+```csharp
 public enum ProfileStatus
 {
     ProfileA,
@@ -366,7 +366,7 @@ class Executable : BuildBaseClass
 
 例外処理の実装方法は、`try catch finally`構文を使用した。以下のように、例外が発生しそうなコードを`try`で囲む。例外が発生した場合、例外の種類に応じて、`catch`の処理が行われる。`finally`は全ての場合に実行されるコードであり、リソースの開放などを行う。
 
-```cs
+```csharp
 public override void Run(ProfileStatus profileStatus)
 {
     switchProfile(profileStatus);
