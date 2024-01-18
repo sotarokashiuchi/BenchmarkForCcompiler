@@ -20,6 +20,7 @@ namespace BenchmarkForCcompiler
 {
     public partial class Form1 : System.Windows.Forms.Form
     {
+        /* インスタンスの生成 */
         Profile profileA = new Profile();
         Profile profileB = new Profile();
         Compile compile = new Compile();
@@ -30,8 +31,8 @@ namespace BenchmarkForCcompiler
 
         public Form1()
         {
+            /* インスタンスの初期化処理 */
             InitializeComponent();
-
             profileA.Initialize(comboBox1, textBox2, textBox3, textBox6, textBox15);
             profileB.Initialize(comboBox2, textBox7, textBox9, textBox8, textBox14);
             compile.Initialize(richTextBox1, textBox4, richTextBox4, textBox4, richTextBox7);
@@ -41,6 +42,7 @@ namespace BenchmarkForCcompiler
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            /* 初期設定適応 */
             // temp directory 作成
             Directory.CreateDirectory(@"temp" + ProfileStatus.ProfileA);
             Directory.CreateDirectory(@"temp" + ProfileStatus.ProfileB);
@@ -57,6 +59,7 @@ namespace BenchmarkForCcompiler
 
         private void Form1_Close(object sender, EventArgs e)
         {
+            /* 終了処理 */
             Directory.Delete(@"temp" + ProfileStatus.ProfileA, true);
             Directory.Delete(@"temp" + ProfileStatus.ProfileB, true);
         }
@@ -216,9 +219,6 @@ namespace BenchmarkForCcompiler
             diff表示ToolStripMenuItem.Checked = true;
             比較表示ToolStripMenuItem.Checked = false;
             changeViewMode(false);
-            compile.Comparison(profileA.GetNowProfile(), profileB.GetNowProfile());
-            asm.Comparison();
-            executable.Comparison();
         }
 
         private void changeViewMode(bool mode)
@@ -294,6 +294,7 @@ namespace BenchmarkForCcompiler
 
     class Profile
     {
+        /* プロファイルの全ての情報を格納する構造体の定義 */
         public struct ProfileInfo
         {
             public string ProfileName;
@@ -319,6 +320,7 @@ namespace BenchmarkForCcompiler
         private System.Windows.Forms.TextBox asmFileNameTextBox;
         private string profilePath = @"profile\\";
 
+        /* 初期化 */
         public void Initialize(
             System.Windows.Forms.ComboBox comboBox,
             System.Windows.Forms.TextBox compilerTextBox,
@@ -335,6 +337,7 @@ namespace BenchmarkForCcompiler
             ShowProfileList();
         }
 
+        /* comboBoxのリストに追加 */
         public void ShowProfileList()
         {
             comboBox.Items.Clear();
@@ -385,6 +388,7 @@ namespace BenchmarkForCcompiler
             return profileInfo;
         }
 
+        /* プロファイルを表示 */
         public void ShowProfileInfo()
         {
             RoadProfileInfo(comboBox.Text);
@@ -396,7 +400,7 @@ namespace BenchmarkForCcompiler
         }
 
 
-
+        /* プロファイル作成 */
         public void CreateProfile()
         {
             // ファイル名の競合を確認
@@ -427,11 +431,13 @@ namespace BenchmarkForCcompiler
             return;
         }
 
+        /* 現在のプロファイル */
         public ProfileInfo GetNowProfile()
         {
             return new ProfileInfo(comboBox.Text, compilerTextBox.Text, optionTextBox.Text, executableFileNameTextBox.Text, asmFileNameTextBox.Text);
         }
 
+        /* プロファイルの保存 */
         public void SaveProfile()
         {
             profileInfo = GetNowProfile();
@@ -451,6 +457,7 @@ namespace BenchmarkForCcompiler
         ProfileB,
     }
 
+    /* 抽象クラス */
     abstract class BuildBaseClass
     {
         protected System.Windows.Forms.RichTextBox outputRichTextBox;
@@ -462,6 +469,7 @@ namespace BenchmarkForCcompiler
         protected System.Windows.Forms.RichTextBox ComparisonRichOutputTextBox;
         protected Comparison comparison = new Comparison();
 
+        /* 初期化 */
         public void Initialize(
             System.Windows.Forms.RichTextBox ProfileA_OutputRichTextBox,
             System.Windows.Forms.TextBox ProfileA_InputFileNameTextBox,
